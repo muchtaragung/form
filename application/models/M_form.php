@@ -26,6 +26,15 @@ class M_form extends CI_Model
         $query = $this->db->get();
         return $query;
     }
+    public function get_perusahaan()
+    {
+        $this->db->select('*');
+        $this->db->from('akses');
+        $this->db->join('perusahaan', 'perusahaan.id_perusahaan=akses.id_perusahaan');
+        $this->db->join('form', 'form.id_form=akses.id_form');
+        $query = $this->db->get();
+        return $query;
+    }
     public function add_akses($data)
     {
         return $this->db->insert('akses', $data);
