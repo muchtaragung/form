@@ -20,7 +20,7 @@ class Outcome_based_thinking extends CI_Controller
     public function save()
     {
         // mengambil tipe form
-        $form = $this->form->get_where(['nama_form' => 'Outcome Based Thingking'])->row();
+        $form = $this->form->get_where(['nama_form' => 'Outcome Based Thinking'])->row();
 
         // mengambil data dari inputan user
         $data['opponent']        = $this->input->post('opponent');
@@ -33,10 +33,11 @@ class Outcome_based_thinking extends CI_Controller
         $data['pertanyaan6']     = $this->input->post('pertanyaan6');
 
         // data yang akan di masukan ke db
-        $form_uo['isi'] = json_encode($data); // mengencode data inputan user
-        $form_uo['id_form'] = $form->id_form; // id dari tipe form yang akan di masukan
+        $form_obt['isi'] = json_encode($data); // mengencode data inputan user
+        $form_obt['id_form'] = $form->id_form; // id dari tipe form yang akan di masukan
+        $form_obt['id_user'] = $this->session->userdata('id');
 
-        $this->isi_form->save($form_uo);
+        $this->isi_form->save($form_obt);
         redirect('/form/outcome_based_thinking/show/' . $this->db->insert_id());
     }
 
