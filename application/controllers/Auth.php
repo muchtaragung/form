@@ -62,6 +62,7 @@ class Auth extends CI_Controller
                 if (password_verify($pass, $cek_login->password_user)) {
 
                     // setting userdata
+                    $this->session->set_userdata('status', 'user');
                     $this->session->set_userdata('id', $cek_login->id_user);
                     $this->session->set_userdata('email', $cek_login->email_user);
                     $this->session->set_userdata('name', $cek_login->nama_user);
@@ -124,6 +125,7 @@ class Auth extends CI_Controller
                 if (password_verify($pass, $cek_login->password)) {
 
                     // setting userdata
+                    $this->session->set_userdata('status', 'admin');
                     $this->session->set_userdata('id', $cek_login->id_admin);
                     $this->session->set_userdata('email', $cek_login->email);
                     $this->session->set_userdata('name', $cek_login->nama);
