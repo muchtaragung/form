@@ -28,6 +28,23 @@ class Form_model extends CI_Model
     }
 
     /**
+     * mengambil data form join dengan isi form
+     *
+     * @param array $where
+     *
+     * @return void
+     */
+    public function get_where_join(array $where)
+    {
+        $this->db->select('*');
+        $this->db->from('form');
+        $this->db->join('isi_form', 'isi_form.id_form = form.id_form');
+
+        return $this->db->get();
+    }
+
+
+    /**
      * mengambil semua data tabel
      *
      * @return void
