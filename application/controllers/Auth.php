@@ -128,7 +128,7 @@ class Auth extends CI_Controller
                     $this->session->set_userdata('status', 'admin');
                     $this->session->set_userdata('id', $cek_login->id_admin);
                     $this->session->set_userdata('email', $cek_login->email);
-                    $this->session->set_userdata('name', $cek_login->nama);
+                    $this->session->set_userdata('name', $cek_login->name);
 
                     echo 'Berhasil Login sebagai admin';
                     echo '<br>';
