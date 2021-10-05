@@ -10,6 +10,10 @@ class Dashboard extends CI_Controller
         $this->load->model('isi_form_model', 'isi_form');
         $this->load->model('User_model', 'user');
         $this->load->model('Perusahaan_model', 'perusahaan');
+        if ($this->session->userdata('status') != 'user') {
+            echo '<script>alert("Silahkan Login Untuk Mengakses Halaman ini")</script>';
+            redirect('admin/login', 'refresh');
+        }
     }
 
     public function index()

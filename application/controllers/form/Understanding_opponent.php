@@ -9,6 +9,10 @@ class Understanding_opponent extends CI_Controller
         parent::__construct();
         $this->load->model('form_model', 'form');
         $this->load->model('isi_form_model', 'isi_form');
+        if ($this->session->userdata('status') != 'user') {
+            echo '<script>alert("Silahkan Login Untuk Mengakses Halaman ini")</script>';
+            redirect('admin/login', 'refresh');
+        }
     }
 
     public function index()

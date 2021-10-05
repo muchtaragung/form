@@ -11,6 +11,10 @@ class Perusahaan extends CI_Controller
         $this->load->model('User_model', 'user');
         $this->load->model('Perusahaan_model', 'perusahaan');
         $this->load->helper('security');
+        if ($this->session->userdata('status') != 'admin') {
+            echo '<script>alert("Silahkan Login Untuk Mengakses Halaman ini")</script>';
+            redirect('admin/login', 'refresh');
+        }
     }
 
     /**
