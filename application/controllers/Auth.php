@@ -67,9 +67,7 @@ class Auth extends CI_Controller
                     $this->session->set_userdata('email', $cek_login->email_user);
                     $this->session->set_userdata('name', $cek_login->nama_user);
 
-                    echo 'Berhasil Login sebagai user';
-                    echo '<br>';
-                    echo '<a href="' . site_url('logout') . '">logout</a>';
+                    redirect('dashboard/list_form');
                 } else {
                     $this->session->set_flashdata('error', 'Email atau password yang Anda masukan salah.');
                     redirect('login');
@@ -130,9 +128,7 @@ class Auth extends CI_Controller
                     $this->session->set_userdata('email', $cek_login->email);
                     $this->session->set_userdata('name', $cek_login->name);
 
-                    echo 'Berhasil Login sebagai admin';
-                    echo '<br>';
-                    echo '<a href="' . site_url('logout') . '">logout</a>';
+                    redirect('admin');
                 } else {
                     $this->session->set_flashdata('error', 'Email atau password yang Anda masukan salah.');
                     redirect('admin/login');
