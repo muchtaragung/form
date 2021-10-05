@@ -39,7 +39,7 @@ class Form_model extends CI_Model
         $this->db->select('*');
         $this->db->from('form');
         $this->db->join('isi_form', 'isi_form.id_form = form.id_form');
-
+        $this->db->where($where);
         return $this->db->get();
     }
 
