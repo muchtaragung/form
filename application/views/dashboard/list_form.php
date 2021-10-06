@@ -48,7 +48,7 @@
                                             <tr>
                                                 <th>No</th>
                                                 <th>Nama Form</th>
-                                                <th>Action</th>
+                                                <th class="text-center">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -57,10 +57,10 @@
                                                 <tr>
                                                     <td><?= $i++ ?></td>
                                                     <td><?= $data->nama_form ?></td>
-                                                    <td>
-                                                        <a href="<?= site_url('dashboard/view_form/' . $data->id_form) ?>" class="btn btn-primary btn-sm">Lihat Form</a>
-                                                        <a href="<?= site_url('dashboard/download_form/' . $data->id_form) ?>" class="btn btn-danger btn-sm">Download form kosong</a>
-                                                        <a href="<?= site_url('dashboard/download_pdf/' . $data->id_form) ?>" class="btn btn-danger btn-sm">Download form terisi</a>
+                                                    <td class="text-center">
+                                                        <a href="<?= site_url('dashboard/view_form/' . $data->id_form) ?>" class="btn btn-primary btn-sm"><i class="fas fa-table"></i><br>Lihat Form</a>
+                                                        <a href="<?= site_url('dashboard/download_form/' . $data->id_form) ?>" class="btn btn-info btn-sm"><i class="fas fa-file"></i><br>Download form kosong</a>
+                                                        <a href="<?= site_url('dashboard/download_pdf/' . $data->id_form) ?>" class="btn btn-success btn-sm"><i class="far fa-file-alt"></i><br>Download form terisi</a>
                                                     </td>
                                                 </tr>
                                             <?php endforeach ?>
