@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'admin',
-	'password' => 'admin',
-	'database' => 'program_form',
+	'hostname' => '151.106.119.126',
+	'username' => 'korpora2018_demo_form',
+	'password' => 'demo_form',
+	'database' => 'korpora2018_demo_form',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
