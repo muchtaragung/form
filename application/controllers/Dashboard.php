@@ -59,4 +59,12 @@ class Dashboard extends CI_Controller
             redirect('form/' . $nama_form . '/');
         }
     }
+
+    public function download_form($id_form)
+    {
+        $form = $this->form->get_where(['id_form' => $id_form])->row();
+        $nama_form = strtolower(str_replace(' ', '_', $form->nama_form));
+
+        redirect('pdf_form/' . $nama_form . ".pdf");
+    }
 }
