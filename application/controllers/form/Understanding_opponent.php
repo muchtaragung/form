@@ -63,4 +63,27 @@ class Understanding_opponent extends CI_Controller
         // die();
         $this->load->view('show/understanding_opponent', $data);
     }
+
+    public function pdf($id_isi)
+    {
+        // mengambil data dari db
+        $data_form = $this->isi_form->get_where(['id_isi' => $id_isi])->row();
+
+        // mengdecode data isi dari form hasil generate dari db
+        $form = json_decode($data_form->isi);
+
+        // menyiapkan data untuk di tampilkan ke view
+        $data['goal']      = $form->goal;
+        $data['interest']  = $form->interest;
+        $data['saw']       = $form->saw;
+        $data['informasi'] = $form->informasi;
+        $data['bagaimana'] = $form->bagaimana;
+
+        // var_dump($data);
+        // die();
+        $this->pdf->setPaper('A4', 'landscape');
+        $this->pdf->filename = "Understanding Opponent-" . date('d M Y') . ".pdf";
+
+        $this->pdf->load_view('pdf/understanding_opponent', $data);
+    }
 }

@@ -59,7 +59,8 @@
                                                     <td><?= $data->nama_form ?></td>
                                                     <td>
                                                         <a href="<?= site_url('dashboard/view_form/' . $data->id_form) ?>" class="btn btn-primary btn-sm">Lihat Form</a>
-                                                        <a href="<?= site_url('dashboard/download_form/' . $data->id_form) ?>" class="btn btn-danger btn-sm">Download PDF</a>
+                                                        <a href="<?= site_url('dashboard/download_form/' . $data->id_form) ?>" class="btn btn-danger btn-sm">Download form kosong</a>
+                                                        <a href="<?= site_url('dashboard/download_pdf/' . $data->id_form) ?>" class="btn btn-danger btn-sm">Download form terisi</a>
                                                     </td>
                                                 </tr>
                                             <?php endforeach ?>
