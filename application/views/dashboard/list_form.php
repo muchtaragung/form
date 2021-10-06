@@ -17,17 +17,17 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <div class="container-fluid">
-                    <!-- <div class="row mb-2">
+                    <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>General Form</h1>
+                            <h1>List Form</h1>
                         </div>
-                        <div class="col-sm-6">
+                        <!-- <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
                                 <li class="breadcrumb-item active">General Form</li>
                             </ol>
-                        </div>
-                    </div> -->
+                        </div> -->
+                    </div>
                 </div><!-- /.container-fluid -->
             </section>
 
@@ -62,6 +62,7 @@
                                                     <td><?= $data->nama_form ?></td>
                                                     <td>
                                                         <a href="<?= site_url('dashboard/view_form/' . $data->id_form) ?>" class="btn btn-primary btn-sm">Lihat Form</a>
+                                                        <a href="<?= site_url('dashboard/download_form/' . $data->id_form) ?>" class="btn btn-danger btn-sm">Download PDF</a>
                                                     </td>
                                                 </tr>
                                             <?php endforeach ?>
