@@ -69,4 +69,32 @@ class Outcome_based_thinking extends CI_Controller
         // die();
         $this->load->view('show/outcome_based_thinking', $data);
     }
+
+    public function pdf($id_isi_form)
+    {
+        // mengambil data dari db
+        $data_form = $this->isi_form->get_where(['id_isi' => $id_isi_form])->row();
+
+        // mengdecode data isi dari form hasil generate dari db
+        $form = json_decode($data_form->isi);
+
+        // menyiapkan data untuk di tampilkan ke view
+        $data['opponent']        = $form->opponent;
+        $data['nama_perusahaan'] = $form->nama_perusahaan;
+        $data['pertanyaan1']     = $form->pertanyaan1;
+        $data['pertanyaan2']     = $form->pertanyaan2;
+        $data['pertanyaan3']     = $form->pertanyaan3;
+        $data['pertanyaan4']     = $form->pertanyaan4;
+        $data['pertanyaan5']     = $form->pertanyaan5;
+        $data['pertanyaan6']     = $form->pertanyaan6;
+
+        $data['page_title'] = 'Show Form Outcome Based Thingking';
+
+        // var_dump($data);
+        // die();
+        $this->pdf->setPaper('A4', 'landscape');
+        $this->pdf->filename = "Outcome Based Thingking-" . date('d M Y') . ".pdf";
+
+        $this->pdf->load_view('pdf/outcome_based_thinking', $data);
+    }
 }
