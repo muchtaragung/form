@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 05 Okt 2021 pada 08.15
+-- Waktu pembuatan: 06 Okt 2021 pada 04.18
 -- Versi server: 10.6.4-MariaDB
 -- Versi PHP: 8.0.10
 
@@ -68,6 +68,14 @@ CREATE TABLE `form` (
   `created_at` timestamp NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `form`
+--
+
+INSERT INTO `form` (`id_form`, `nama_form`, `created_at`, `updated_at`) VALUES
+(1, 'Understanding Opponent', '2021-10-06 04:14:50', '0000-00-00 00:00:00'),
+(2, 'Outcome Based Thinking', '2021-10-06 04:16:01', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -174,7 +182,7 @@ ALTER TABLE `akses`
 -- AUTO_INCREMENT untuk tabel `form`
 --
 ALTER TABLE `form`
-  MODIFY `id_form` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_form` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `isi_form`
@@ -193,16 +201,6 @@ ALTER TABLE `perusahaan`
 --
 ALTER TABLE `user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
---
-
---
--- Ketidakleluasaan untuk tabel `isi_form`
---
-ALTER TABLE `isi_form`
-  ADD CONSTRAINT `isi_form_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
