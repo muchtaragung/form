@@ -27,6 +27,17 @@ class Akses_model extends CI_Model
         return $this->db->get_where($this->table, $where);
     }
 
+    public function get_join_where($join, $where)
+    {
+        $this->db->select('*');
+        $this->db->from($this->table);
+        foreach ($join as $data) {
+            $this->db->join($data[0], $data[1]);
+        }
+        $this->db->where($where);
+        return $this->db->get();
+    }
+
     /**
      * mengambil semua data tabel
      *
@@ -35,6 +46,16 @@ class Akses_model extends CI_Model
     public function get_all()
     {
         return $this->db->get($this->table);
+    }
+
+    public function get_join($join)
+    {
+        $this->db->select('*');
+        $this->db->from($this->table);
+        foreach ($join as $data) {
+            $this->db->join($data[0], $data[1]);
+        }
+        return $this->db->get();
     }
 
     /**

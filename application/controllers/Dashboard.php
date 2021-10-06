@@ -10,6 +10,7 @@ class Dashboard extends CI_Controller
         $this->load->model('isi_form_model', 'isi_form');
         $this->load->model('User_model', 'user');
         $this->load->model('Perusahaan_model', 'perusahaan');
+        $this->load->model('Akses_model', 'akses');
         if ($this->session->userdata('status') != 'user') {
             echo '<script>alert("Silahkan Login Untuk Mengakses Halaman ini")</script>';
             redirect('admin/login', 'refresh');
@@ -28,8 +29,17 @@ class Dashboard extends CI_Controller
      */
     public function list_form()
     {
+        $join = [
+            ['form', 'akses.id_form = form.id_form'],
+            // ['isi_form', 'isi_form.id_form = form.id_form'],
+        ];
+
+        $where = [
+            'akses.akses' => 1
+        ];
+
         $data['page_title'] = "List Form | Program Form";
-        $data['form']       = $this->form->get_all()->result();
+        $data['form']       = $this->akses->get_join_where($join, $where)->result();
         $this->load->view('dashboard/list_form', $data);
     }
 
