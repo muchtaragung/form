@@ -70,4 +70,8 @@ class Perusahaan_model extends CI_Model
     {
         return $this->db->delete($this->table, $where);
     }
+    public function delete_user(array $where)
+    {
+        return $this->db->delete('user', $where);
+    }
 }

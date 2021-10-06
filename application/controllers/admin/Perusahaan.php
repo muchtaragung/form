@@ -225,6 +225,7 @@ class Perusahaan extends CI_Controller
     public function delete($id_perusahaan)
     {
         $this->perusahaan->delete(['id_perusahaan' => $id_perusahaan]);
+        $this->perusahaan->delete_user(['id_perusahaan' => $id_perusahaan]);
         $this->session->set_flashdata('msg', 'Data Perusahaan Berhasil Di Hapus');
         redirect('admin/perusahaan');
     }

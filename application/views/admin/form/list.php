@@ -58,6 +58,7 @@
                                             <tr class="text-center">
                                                 <th>No</th>
                                                 <th>Nama Form</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -66,6 +67,9 @@
                                                 <tr class="text-center">
                                                     <td><?= $i++ ?></td>
                                                     <td><?= $data->nama_form ?></td>
+                                                    <td>
+                                                        <a href="<?= site_url('dashboard/download_form/' . $data->id_form) ?>" class="btn btn-danger btn-sm">Download PDF</a>
+                                                    </td>
                                                 </tr>
                                             <?php endforeach ?>
                                         </tbody>

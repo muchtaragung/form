@@ -69,26 +69,24 @@
                                             <?php foreach ($perusahaan as $data) : ?>
                                                 <tr class="text-center">
                                                     <td><?= $i++ ?></td>
-                                                    <td><?= $data->nama_perusahaan ?></td>
+                                                    <td><strong><?= $data->nama_perusahaan ?></strong></td>
                                                     <td>
-                                                        <div class="btn-group">
-                                                            <a href="<?= site_url('admin/perusahaan/list_form/' . $data->id_perusahaan) ?>" class="btn btn-primary btn-sm">
-                                                                <i class="fas fa-table"></i><br>
-                                                                List Form
-                                                            </a>
-                                                            <a href="<?= site_url('admin/user/list/' . $data->id_perusahaan) ?>" class="btn btn-success btn-sm">
-                                                                <i class="fas fa-users"></i><br>
-                                                                Users
-                                                            </a>
-                                                            <button type="button" class="btn btn-info btn-sm" title="Edit" onclick="edit_perusahaan('<?php echo $data->id_perusahaan ?>')">
-                                                                <i class="fas fa-edit"></i><br>
-                                                                Edit
-                                                            </button>
-                                                            <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete('<?= site_url('admin/perusahaan/delete/' . $data->id_perusahaan) ?>','<?= $data->nama_perusahaan ?>')">
-                                                                <i class="fas fa-trash"></i><br>
-                                                                Hapus
-                                                            </button>
-                                                        </div>
+                                                        <a href="<?= site_url('admin/perusahaan/list_form/' . $data->id_perusahaan) ?>" class="btn btn-primary btn-sm">
+                                                            <i class="fas fa-table"></i><br>
+                                                            List Form
+                                                        </a>
+                                                        <a href="<?= site_url('admin/user/list/' . $data->id_perusahaan) ?>" class="btn btn-success btn-sm">
+                                                            <i class="fas fa-users"></i><br>
+                                                            Users
+                                                        </a>
+                                                        <button type="button" class="btn btn-info btn-sm" title="Edit" onclick="edit_perusahaan('<?php echo $data->id_perusahaan ?>')">
+                                                            <i class="fas fa-edit"></i><br>
+                                                            Edit
+                                                        </button>
+                                                        <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete('<?= site_url('admin/perusahaan/delete/' . $data->id_perusahaan) ?>','<?= $data->nama_perusahaan ?>')">
+                                                            <i class="fas fa-trash"></i><br>
+                                                            Hapus
+                                                        </button>
                                                     </td>
                                                 </tr>
                                             <?php endforeach ?>

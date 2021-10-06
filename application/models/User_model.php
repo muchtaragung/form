@@ -64,6 +64,22 @@ class User_model extends CI_Model
         $query = $this->db->get();
         return $query;
     }
+    /**
+     * mengambil data tabel dengan kondisi where
+     *
+     * @param array $where array dari data yang mau di ambil
+     * @param array $where array dari data yang mau di ambil
+     * @return void
+     */
+    public function get_where_join_form($id)
+    {
+        $this->db->select("*");
+        $this->db->from('form');
+        $this->db->join('isi_form', 'isi_form.id_form = form.id_form');
+        $this->db->where('isi_form.id_user', $id);
+        $query = $this->db->get();
+        return $query;
+    }
 
     /**
      * mengambil semua data tabel

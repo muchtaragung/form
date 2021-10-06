@@ -49,7 +49,7 @@
                             <?php } ?>
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="card-title">List Data User</h3>
+                                    <h3 class="card-title">List Form Terisi</h3>
                                     <button type="button" class="btn btn-success float-right" onclick="add_user()">
                                         <i class="fas fa-plus"></i>
                                     </button>
@@ -60,35 +60,18 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Nama User</th>
-                                                <th>Email User</th>
-                                                <th>Perusahaan</th>
+                                                <th>Nama Form</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php $i = 1 ?>
-                                            <?php foreach ($user as $data) : ?>
-                                                <tr>
+                                            <?php foreach ($form as $data) : ?>
+                                                <tr class="text-center">
                                                     <td><?= $i++ ?></td>
-                                                    <td><?= $data->nama_user ?></td>
-                                                    <td><?= $data->email_user ?></td>
-                                                    <td><?= $data->nama_perusahaan ?></td>
+                                                    <td><?= $data->nama_form ?></td>
                                                     <td>
-                                                        <div class="btn-group">
-                                                            <a href="<?= site_url('admin/user/list_form/' . $data->id_user) ?>" class="btn btn-success">
-                                                                <i class="fas fa-table"></i><br>
-                                                                Form Terisi
-                                                            </a>
-                                                            <button type="button" class="btn btn-info" title="Edit" onclick="edit_user('<?php echo $data->id_user ?>')">
-                                                                <i class="fas fa-edit"></i><br>
-                                                                Edit
-                                                            </button>
-                                                            <button type="button" class="btn btn-danger" onclick="confirmDelete('<?= site_url('admin/User/delete/' . $data->id_user) ?>','<?= $data->nama_user ?>')">
-                                                                <i class="fas fa-trash"></i><br>
-                                                                Hapus
-                                                            </button>
-                                                        </div>
+                                                        <a href="<?= site_url('dashboard/download_form/' . $data->id_form) ?>" class="btn btn-danger btn-sm rounded"><i class="fas fa-file-pdf"></i><br> Download PDF</a>
                                                     </td>
                                                 </tr>
                                             <?php endforeach ?>

@@ -31,6 +31,22 @@ class User extends CI_Controller
         // var_dump($data);
         $this->load->view('admin/user/list', $data);
     }
+    /**
+     * menampilkan list form yang telah diisi oleh user
+     *
+     * @param int $id_user id dari user
+     *
+     * @return void
+     */
+    public function list_form($id_user)
+    {
+        // mengambil data form sesuai dengan id user
+        $data['form']      = $this->user->get_where_join_form($id_user)->result();
+        $data['page_title'] = "List Form User | Program Form";
+
+        // var_dump($data);
+        $this->load->view('admin/user/list_form', $data);
+    }
 
     /**
      * menyimpan data user
