@@ -40,9 +40,6 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h3 class="card-title">List Form</h3>
-                                    <button type="button" class="btn btn-success float-right" onclick="add_user()">
-                                        <i class="fas fa-plus"></i>
-                                    </button>
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">

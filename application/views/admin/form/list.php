@@ -68,7 +68,7 @@
                                                     <td><?= $i++ ?></td>
                                                     <td><?= $data->nama_form ?></td>
                                                     <td>
-                                                        <a href="<?= site_url('dashboard/download_form/' . $data->id_form) ?>" class="btn btn-danger btn-sm">Download PDF</a>
+                                                        <a href="<?= site_url('admin/form/download_form/' . $data->id_form) ?>" class="btn btn-danger btn-sm">Download form kosong</a>
                                                     </td>
                                                 </tr>
                                             <?php endforeach ?>

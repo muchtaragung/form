@@ -150,6 +150,18 @@ class User extends CI_Controller
             redirect('admin/user/list/' . $data['id_perusahaan']);
         }
     }
+    /**
+     * reset form user
+     *
+     * @return void
+     */
+    public function reset_form($id_form, $uri, $id_user)
+    {
+        // update data dan kembali ke halaman list user
+        $this->user->reset_form($id_form, $id_user);
+        $this->session->set_flashdata('msg', 'Data berhasil direset');
+        redirect('admin/user/list_form/' . $uri);
+    }
 
     /**
      * menghapus data user

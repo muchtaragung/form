@@ -74,21 +74,19 @@
                                                     <td><?= $data->nama_user ?></td>
                                                     <td><?= $data->email_user ?></td>
                                                     <td><?= $data->nama_perusahaan ?></td>
-                                                    <td>
-                                                        <div class="btn-group">
-                                                            <a href="<?= site_url('admin/user/list_form/' . $data->id_user) ?>" class="btn btn-success">
-                                                                <i class="fas fa-table"></i><br>
-                                                                Form Terisi
-                                                            </a>
-                                                            <button type="button" class="btn btn-info" title="Edit" onclick="edit_user('<?php echo $data->id_user ?>')">
-                                                                <i class="fas fa-edit"></i><br>
-                                                                Edit
-                                                            </button>
-                                                            <button type="button" class="btn btn-danger" onclick="confirmDelete('<?= site_url('admin/User/delete/' . $data->id_user) ?>','<?= $data->nama_user ?>')">
-                                                                <i class="fas fa-trash"></i><br>
-                                                                Hapus
-                                                            </button>
-                                                        </div>
+                                                    <td class="text-center">
+                                                        <a style="border-radius: 12px" href="<?= site_url('admin/user/list_form/' . $data->id_user) ?>" class="btn btn-sm btn-success">
+                                                            <i class="fas fa-table"></i><br>
+                                                            Form Terisi
+                                                        </a>
+                                                        <button style="border-radius: 12px" type="button" class="btn btn-sm btn-info" title="Edit" onclick="edit_user('<?php echo $data->id_user ?>')">
+                                                            <i class="fas fa-edit"></i><br>
+                                                            Edit
+                                                        </button>
+                                                        <button style="border-radius: 12px" type="button" class="btn btn-sm btn-danger" onclick="confirmDelete('<?= site_url('admin/User/delete/' . $data->id_user) ?>','<?= $data->nama_user ?>')">
+                                                            <i class="fas fa-trash"></i><br>
+                                                            Hapus
+                                                        </button>
                                                     </td>
                                                 </tr>
                                             <?php endforeach ?>

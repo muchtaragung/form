@@ -50,9 +50,6 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h3 class="card-title">List Form Terisi</h3>
-                                    <button type="button" class="btn btn-success float-right" onclick="add_user()">
-                                        <i class="fas fa-plus"></i>
-                                    </button>
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body">
@@ -71,6 +68,10 @@
                                                     <td><?= $i++ ?></td>
                                                     <td><?= $data->nama_form ?></td>
                                                     <td>
+                                                        <button type="button" class="btn btn-info btn-sm" onclick="confirmReset('<?= site_url('admin/user/reset_form/' . $data->id_form . '/' . $this->uri->segment(4) . '/' . $data->id_user) ?>','<?= $data->nama_form ?>')">
+                                                            <i class="fas fa-redo-alt"></i><br>
+                                                            Reset
+                                                        </button>
                                                         <a href="<?= site_url('dashboard/download_form/' . $data->id_form) ?>" class="btn btn-danger btn-sm rounded"><i class="fas fa-file-pdf"></i><br> Download PDF</a>
                                                     </td>
                                                 </tr>
@@ -109,116 +110,10 @@
 
     <?php $this->load->view('layout/script') ?>
 
-    <div class="modal fade" id="modal-tambah">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <form id="form-tambah" action="<?= site_url('admin/user/save') ?>" method="POST">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Tambah User</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <input type="hidden" name="id_perusahaan" value="<?= $this->uri->segment(4); ?>">
-
-                        <div class="form-group">
-                            <label for="nama_user">Nama User</label>
-                            <input type="text" name="nama_user" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="email_user">email User</label>
-                            <input type="email" name="email_user" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="password_user">Password User</label>
-                            <input type="password" name="password_user" class="form-control">
-                        </div>
-                    </div>
-                    <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                        <button type="submit" class="btn btn-primary">Simpan</button>
-                    </div>
-                </form>
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
-
-    <div class="modal fade" id="edit_form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
-        <div class="modal-dialog role=" document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Edit User</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <form id="form1" action="<?php echo site_url("admin/user/update") ?>" method="post">
-                    <div class="modal-body">
-                        <input type="hidden" name="id_user" value="">
-                        <input type="hidden" name="password_lama">
-                        <input type="hidden" name="id_perusahaan">
-                        <div class="form-group">
-                            <label for="nama_user">Nama User</label>
-                            <input type="text" name="nama_user" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="email_user">email User</label>
-                            <input type="email" name="email_user" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="password_user">Password User</label>
-                            <input type="password" name="password_user" class="form-control">
-                        </div>
-                    </div>
-                    <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                        <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
     <script>
-        function add_user() {
-            save_method = 'add';
-            $('#form-tambah')[0].reset(); // reset form on modals
-            $('#modal-tambah').modal('show'); // show bootstrap modal
-            $('.modal-title').text('Tambah User'); // Set Title to Bootstrap modal title
-        }
-
-        function edit_user(id) {
-            save_method = 'update';
-            $('#form1')[0].reset(); // reset form on modals
-
-            //Ajax Load data from ajax
-            $.ajax({
-                url: "<?php echo site_url('admin/user/edit') ?>/" + id,
-                type: "GET",
-                dataType: "JSON",
-                success: function(data) {
-                    console.log(data);
-                    $('[name="id_user"]').val(data.id_user);
-                    $('[name="nama_user"]').val(data.nama_user);
-                    $('[name="email_user"]').val(data.email_user);
-                    $('[name="password_lama"]').val(data.password_user);
-                    $('[name="id_perusahaan"]').val(data.id_perusahaan);
-                    $('#edit_form').modal('show'); // show bootstrap modal when complete loaded
-                    $('.modal-title').text('Edit User'); // Set title to Bootstrap modal title
-
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    alert('Error get data from ajax');
-                }
-            });
-        }
-
-        function confirmDelete(link, nama) {
+        function confirmReset(link, nama) {
             Swal.fire({
-                title: 'Apakah Anda Ingin Menghapus User ' + nama,
+                title: 'Apakah anda ingin reset form ' + nama,
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',

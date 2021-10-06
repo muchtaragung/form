@@ -214,4 +214,11 @@ class Form extends CI_Controller
         $this->session->set_flashdata('msg', 'Data Perusahaan Berhasil Di Hapus');
         redirect('admin/perusahaan');
     }
+    public function download_form($id_form)
+    {
+        $form = $this->form->get_where(['id_form' => $id_form])->row();
+        $nama_form = strtolower(str_replace(' ', '_', $form->nama_form));
+
+        redirect('pdf_form/' . $nama_form . ".pdf");
+    }
 }

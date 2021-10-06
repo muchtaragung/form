@@ -121,4 +121,17 @@ class User_model extends CI_Model
     {
         return $this->db->delete($this->table, $where);
     }
+    /**
+     * reset form user
+     * arr where adalah id dari kolom yang akan di hapus
+     *
+     * @param array $where
+     * @return void
+     */
+    public function reset_form($id_form, $id_user)
+    {
+        $this->db->where('id_form', $id_form);
+        $this->db->where('id_user', $id_user);
+        return $this->db->delete('isi_form');
+    }
 }

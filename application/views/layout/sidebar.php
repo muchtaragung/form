@@ -16,7 +16,7 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item">
                         <a href="<?= site_url('admin/perusahaan') ?>" class="nav-link <?php if ($this->uri->segment(2) == 'perusahaan') : ?> active <?php endif ?>">
-                            <i class="nav-icon fas fa-th"></i>
+                            <i class="nav-icon fas fa-building"></i>
                             <p>
                                 List Perusahaan
                             </p>
@@ -47,7 +47,7 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item">
                         <a href="<?= site_url('dashboard/list_form') ?>" class="nav-link <?php if ($this->uri->segment(2) == 'list_form') : ?> active <?php endif ?>">
-                            <i class="nav-icon fas fa-th"></i>
+                            <i class="nav-icon fas fa-table"></i>
                             <p>
                                 List Form
                             </p>
