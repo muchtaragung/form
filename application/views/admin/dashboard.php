@@ -60,6 +60,19 @@
                             </div>
                             <!-- /.info-box -->
                         </div>
+
+                        <div class="col-md-3 col-sm-6 col-12">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-warning"><i class="fas fa-table"></i></span>
+
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Form</span>
+                                    <span class="info-box-number"><?= $this->db->count_all_results('form'); ?></span>
+                                </div>
+                                <!-- /.info-box-content -->
+                            </div>
+                            <!-- /.info-box -->
+                        </div>
                     </div>
                     <!-- /.row -->
                 </div><!-- /.container-fluid -->
