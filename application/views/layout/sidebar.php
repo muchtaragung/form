@@ -22,6 +22,15 @@
                             </p>
                         </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a href="<?= site_url('logout') ?>" class="nav-link">
+                            <i class="nav-icon fas fa-door-open"></i>
+                            <p>
+                                logout
+                            </p>
+                        </a>
+                    </li>
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->
@@ -29,27 +38,22 @@
             <!-- Sidebar Menu -->
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                    <li class="nav-item menu-open">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-edit"></i>
+                    <li class="nav-item">
+                        <a href="<?= site_url('dashboard/list_form') ?>" class="nav-link <?php if ($this->uri->segment(2) == 'list_form') : ?> active <?php endif ?>">
+                            <i class="nav-icon fas fa-th"></i>
                             <p>
-                                Forms
-                                <i class="fas fa-angle-left right"></i>
+                                List Form
                             </p>
                         </a>
-                        <ul class="nav nav-treeview">
-                            <?php
-                            $form = $this->db->get('form')->result();
-                            foreach ($form as $data) :
-                            ?>
-                                <li class="nav-item">
-                                    <a href="<?= site_url('dashboard/view_form/' . $data->id_form) ?>" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p><?= $data->nama_form ?></p>
-                                    </a>
-                                </li>
-                            <?php endforeach ?>
-                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="<?= site_url('logout') ?>" class="nav-link">
+                            <i class="nav-icon fas fa-door-open"></i>
+                            <p>
+                                logout
+                            </p>
+                        </a>
                     </li>
                 </ul>
             </nav>
