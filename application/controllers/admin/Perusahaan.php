@@ -87,7 +87,7 @@ class Perusahaan extends CI_Controller
                     'id_form' => $data->id_form,
                     'akses' => 0,
                 );
-                $this->form->new_akses($data);
+                $this->akses->save($data);
             }
             $this->session->set_flashdata('msg', 'Perusahaan berhasil di simpan');
             redirect('admin/perusahaan');
