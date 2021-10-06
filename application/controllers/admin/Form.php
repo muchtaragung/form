@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Perusahaan extends CI_Controller
+class Form extends CI_Controller
 {
 
     public function __construct()
@@ -25,24 +25,10 @@ class Perusahaan extends CI_Controller
      */
     public function index()
     {
-        $data['page_title'] = "List Perusahaan | Program Form";
-        $data['perusahaan'] =  $this->perusahaan->get_all()->result();
-
-        $this->load->view('admin/perusahaan/list', $data);
-    }
-    /**
-     * menampilkan list form perusahaan
-     *
-     * @return void
-     */
-    public function list_form($id)
-    {
-        $data['page_title'] = "List Perusahaan | Program Form";
-        $data['list_form'] =  $this->form->get_akses($id)->result();
+        $data['page_title'] = "List Form | Program Form";
         $data['form'] =  $this->form->get_all()->result();
-        $data['perusahaan'] =  $this->form->get_akses($id)->row();
 
-        $this->load->view('admin/perusahaan/list_form', $data);
+        $this->load->view('admin/form/list', $data);
     }
 
     /**

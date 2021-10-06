@@ -22,6 +22,14 @@
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="<?= site_url('admin/form') ?>" class="nav-link <?php if ($this->uri->segment(2) == 'form') : ?> active <?php endif ?>">
+                            <i class="nav-icon fas fa-table"></i>
+                            <p>
+                                List Form
+                            </p>
+                        </a>
+                    </li>
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->

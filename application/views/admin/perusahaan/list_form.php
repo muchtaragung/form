@@ -49,45 +49,58 @@
                             <?php } ?>
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="card-title">List Data Perusahaan</h3>
-                                    <button type="button" class="btn btn-success float-right" onclick="add_perusahaan()">
+                                    <h3 class="card-title">List Form Perusahaan <?= $perusahaan->nama_perusahaan ?></h3>
+                                    <button type="button" class="btn btn-success float-right" onclick="add_form()">
                                         <i class="fas fa-plus"></i>
                                     </button>
+
                                 </div>
+
                                 <!-- /.card-header -->
                                 <div class="card-body">
+                                    <div class="row mb-5">
+                                        <div class="col-md-12">
+                                            <button type="button" class="btn btn-danger float-right" onclick="deniedAll('<?= site_url('admin/perusahaan/akses_denied_all/' . $perusahaan->id_perusahaan . '/' . $this->uri->segment(4)) ?>')">
+                                                Denied All
+                                            </button>
+                                            <button type="button" class="btn btn-info float-right" onclick="allowAll('<?= site_url('admin/perusahaan/akses_allow_all/' . $perusahaan->id_perusahaan . '/' . $this->uri->segment(4)) ?>')">
+                                                Allow All
+                                            </button>
+                                        </div>
+                                    </div>
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr class="text-center">
                                                 <th>No</th>
-                                                <th>Nama Perusahaan</th>
+                                                <th>Nama Form</th>
+                                                <th>Akses</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php $i = 1 ?>
-                                            <?php foreach ($perusahaan as $data) : ?>
+                                            <?php foreach ($list_form as $data) : ?>
                                                 <tr class="text-center">
                                                     <td><?= $i++ ?></td>
-                                                    <td><?= $data->nama_perusahaan ?></td>
+                                                    <td><?= $data->nama_form ?></td>
+                                                    <?php if ($data->akses == 0) { ?>
+                                                        <td><span class="badge badge-danger">Tidak Diizinkan</span></td>
+                                                    <?php } elseif ($data->akses == 1) { ?>
+                                                        <td><span class="badge badge-success">Diizinkan</span></td>
+                                                    <?php }  ?>
                                                     <td>
                                                         <div class="btn-group">
-                                                            <a href="<?= site_url('admin/perusahaan/list_form/' . $data->id_perusahaan) ?>" class="btn btn-primary btn-sm">
-                                                                <i class="fas fa-table"></i><br>
-                                                                List Form
-                                                            </a>
-                                                            <a href="<?= site_url('admin/user/list/' . $data->id_perusahaan) ?>" class="btn btn-success btn-sm">
-                                                                <i class="fas fa-users"></i><br>
-                                                                Users
-                                                            </a>
-                                                            <button type="button" class="btn btn-info btn-sm" title="Edit" onclick="edit_perusahaan('<?php echo $data->id_perusahaan ?>')">
-                                                                <i class="fas fa-edit"></i><br>
-                                                                Edit
-                                                            </button>
-                                                            <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete('<?= site_url('admin/perusahaan/delete/' . $data->id_perusahaan) ?>','<?= $data->nama_perusahaan ?>')">
-                                                                <i class="fas fa-trash"></i><br>
-                                                                Hapus
-                                                            </button>
+                                                            <?php if ($data->akses == 0) { ?>
+                                                                <button type="button" class="btn btn-warning btn-sm" onclick="confirmAkses('<?= site_url('admin/perusahaan/akses_form_allow/' . $data->id_akses . '/' . $this->uri->segment(4)) ?>','<?= $data->nama_form ?>')">
+                                                                    <i class="fas fa-door-open"></i><br>
+                                                                    Akses
+                                                                </button>
+                                                            <?php } elseif ($data->akses == 1) { ?>
+                                                                <button type="button" class="btn btn-warning btn-sm" onclick="confirmAkses('<?= site_url('admin/perusahaan/akses_form_denied/' . $data->id_akses . '/' . $this->uri->segment(4)) ?>','<?= $data->nama_form ?>')">
+                                                                    <i class="fas fa-door-open"></i><br>
+                                                                    Akses
+                                                                </button>
+                                                            <?php } ?>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -129,17 +142,24 @@
     <div class="modal fade" id="modal-tambah">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form id="form-tambah" action="<?= site_url('admin/perusahaan/save') ?>" method="POST">
+                <form id="form-tambah" action="<?= site_url('admin/perusahaan/add_list_akses_form') ?>" method="POST">
                     <div class="modal-header">
-                        <h4 class="modal-title">Tambah Perusahaan</h4>
+                        <h4 class="modal-title">Tambah List Form</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
                     <div class="modal-body">
+                        <input type="hidden" name="uri" value="<?= $this->uri->segment(4); ?>">
+                        <input type="hidden" name="id_perusahaan" value="<?= $perusahaan->id_perusahaan ?>">
                         <div class="form-group">
-                            <label for="nama_perusahaan">Nama Perusahaan</label>
-                            <input type="text" name="nama_perusahaan" class="form-control">
+                            <label for="">Form</label>
+                            <select class="select2 form-control" name="form" id="form">
+                                <option disabled selected>Pilih Form</option>
+                                <?php foreach ($form as $data) : ?>
+                                    <option value="<?= $data->id_form ?>"><?= $data->nama_form ?></option>
+                                <?php endforeach ?>
+                            </select>
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">
@@ -180,11 +200,11 @@
     </div>
 
     <script>
-        function add_perusahaan() {
+        function add_form() {
             save_method = 'add';
             $('#form-tambah')[0].reset(); // reset form on modals
             $('#modal-tambah').modal('show'); // show bootstrap modal
-            $('.modal-title').text('Tambah Perusahaan'); // Set Title to Bootstrap modal title
+            $('.modal-title').text('Tambah List Form'); // Set Title to Bootstrap modal title
         }
 
         function edit_perusahaan(id) {
@@ -200,7 +220,7 @@
                     $('[name="id"]').val(data.id_perusahaan);
                     $('[name="nama_perusahaan"]').val(data.nama_perusahaan);
                     $('#default').modal('show'); // show bootstrap modal when complete loaded
-                    $('.modal-title').text('Edit Perusahaan'); // Set title to Bootstrap modal title
+                    $('.modal-title').text('Edit Form'); // Set title to Bootstrap modal title
 
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
@@ -220,6 +240,51 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     window.location.replace(link)
+                }
+            })
+        }
+
+        function confirmAkses(link, nama, uri) {
+            Swal.fire({
+                title: 'Apakah Anda Ingin Mengubah Akses Form ' + nama,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.replace(link, uri)
+                }
+            })
+        }
+
+        function allowAll(link, uri) {
+            Swal.fire({
+                title: 'Mengubah semua form menjadi diizinkan, Apakah anda yakin?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.replace(link, uri)
+                }
+            })
+        }
+
+        function deniedAll(link, uri) {
+            Swal.fire({
+                title: 'Mengubah semua form menjadi tidak diizinkan, Apakah anda yakin?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.replace(link, uri)
                 }
             })
         }
