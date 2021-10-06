@@ -11,6 +11,7 @@ class Perusahaan extends CI_Controller
         $this->load->model('User_model', 'user');
         $this->load->model('Perusahaan_model', 'perusahaan');
         $this->load->model('Form_model', 'form');
+        $this->load->model('Akses_model', 'akses');
         $this->load->helper('security');
         if ($this->session->userdata('status') != 'admin') {
             echo '<script>alert("Silahkan Login Untuk Mengakses Halaman ini")</script>';
@@ -112,7 +113,7 @@ class Perusahaan extends CI_Controller
                 'id_form' => $this->input->post('form', true),
                 'akses' => 0,
             );
-            $this->form->new_akses($data);
+            $this->akses->save($data);
             $this->session->set_flashdata('msg', 'Form berhasil di simpan');
             redirect('admin/perusahaan/list_form/' . $uri);
         }
@@ -127,39 +128,46 @@ class Perusahaan extends CI_Controller
     {
         // mengambil data inputan user
         $data = array(
+            'id_akses' => $id_akses,
             'akses' => 1,
         );
-        $this->form->ubah_akses($data, $id_akses);
+        $this->akses->update($data);
         $this->session->set_flashdata('msg', 'Akses berhasil di ubah');
         redirect('admin/perusahaan/list_form/' . $uri);
     }
+
     public function akses_form_denied($id_akses, $uri)
     {
         // mengambil data inputan user
         $data = array(
+            'id_akses' => $id_akses,
             'akses' => 0,
         );
-        $this->form->ubah_akses($data, $id_akses);
+        $this->akses->update($data);
         $this->session->set_flashdata('msg', 'Akses berhasil di ubah');
         redirect('admin/perusahaan/list_form/' . $uri);
     }
+
     public function akses_allow_all($id_perusahaan, $uri)
     {
         // mengambil data inputan user
         $data = array(
             'akses' => 1,
         );
-        $this->form->ubah_akses_all($data, $id_perusahaan);
+        $where = array('id_perusahaan' => $id_perusahaan);
+        $this->akses->update_where($data, $where);
         $this->session->set_flashdata('msg', 'Akses berhasil di ubah');
         redirect('admin/perusahaan/list_form/' . $uri);
     }
+
     public function akses_denied_all($id_perusahaan, $uri)
     {
         // mengambil data inputan user
         $data = array(
             'akses' => 0,
         );
-        $this->form->ubah_akses_all($data, $id_perusahaan);
+        $where = array('id_perusahaan' => $id_perusahaan);
+        $this->akses->update_where($data, $where);
         $this->session->set_flashdata('msg', 'Akses berhasil di ubah');
         redirect('admin/perusahaan/list_form/' . $uri);
     }

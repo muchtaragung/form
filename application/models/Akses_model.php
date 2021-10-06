@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Isi_form_model extends CI_Model
+class Akses_model extends CI_Model
 {
     private $table = 'akses';
 
@@ -49,6 +49,22 @@ class Isi_form_model extends CI_Model
     public function update(array $data)
     {
         $where['id_' . $this->table] = $data['id_' . $this->table];
+
+        return $this->db->where($where)->update($this->table, $data);
+    }
+
+    /**
+     * mengupdate data dengan kondisi where.
+     * arr data ada id nya
+     * idnya yang di pake untuk where
+     *
+     * data yang di update juga ada arr data
+     * @param array $data
+     * @param array $where
+     * @return void
+     */
+    public function update_where(array $data, array $where)
+    {
 
         return $this->db->where($where)->update($this->table, $data);
     }
