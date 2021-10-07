@@ -17,6 +17,19 @@ class Understanding_opponent extends CI_Controller
 
     public function index()
     {
+        // mengambil tipe form
+        $form = $this->form->get_where(['nama_form' => 'Understanding Opponent'])->row();
+        // mengecek apakah si user sudah mengisi form atau belum
+        $where = [
+            'id_form' => $form->id_form,
+            'id_user' => $this->session->userdata('id')
+        ];
+        $isi = $this->isi_form->get_where($where)->row();
+
+        if (isset($isi)) {
+            redirect('form/understanding_opponent/show/' . $isi->id_isi);
+        }
+
         $data['page_title'] = 'Understanding Opponent';
         $this->load->view('form/understanding_opponent', $data);
     }

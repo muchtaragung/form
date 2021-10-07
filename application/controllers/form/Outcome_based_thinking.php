@@ -17,6 +17,19 @@ class Outcome_based_thinking extends CI_Controller
 
     public function index()
     {
+        // mengambil tipe form
+        $form = $this->form->get_where(['nama_form' => 'Outcome Based Thinking'])->row();
+        // mengecek apakah si user sudah mengisi form atau belum
+        $where = [
+            'id_form' => $form->id_form,
+            'id_user' => $this->session->userdata('id')
+        ];
+        $isi = $this->isi_form->get_where($where)->row();
+
+        if (isset($isi)) {
+            redirect('form/outcome_based_thinking/show/' . $isi->id_isi);
+        }
+
         $data['page_title'] = 'Outcome Based Thingking';
         $this->load->view('form/outcome_based_thinking', $data);
     }

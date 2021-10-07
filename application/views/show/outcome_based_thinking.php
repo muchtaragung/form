@@ -47,7 +47,7 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h3 class="card-title">Outcome Based Thinking</h3>
-                                    <a href="<?= site_url('form/outcome_based_thinking/pdf/' . $id_isi) ?>" class="btn btn-sm btn-warning"><i class="fas fa-file-download"></i></a>
+                                    <a href="<?= site_url('form/outcome_based_thinking/pdf/' . $id_isi) ?>" class="btn btn-warning float-right"><i class="fas fa-file-download"></i></a>
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body table-responsive p-0">
