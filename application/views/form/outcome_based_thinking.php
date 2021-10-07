@@ -141,7 +141,7 @@
 
     <script>
         $(function() {
-            bsCustomFileInput required.init();
+            bsCustomFileInput.init();
         });
     </script>
 </body>
