@@ -56,32 +56,32 @@
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="goal">Goal</label>
-                                            <input type="text" class="form-control mb-1" id="goal" placeholder="Goal 1" name="goal[]">
-                                            <input type="text" class="form-control my-1" id="goal" placeholder="Goal 2" name="goal[]">
-                                            <input type="text" class="form-control mt-1" id="goal" placeholder="Goal 3" name="goal[]">
+                                            <input required type="text" class="form-control mb-1" id="goal" placeholder="Goal 1" name="goal[]">
+                                            <input required type="text" class="form-control my-1" id="goal" placeholder="Goal 2" name="goal[]">
+                                            <input required type="text" class="form-control mt-1" id="goal" placeholder="Goal 3" name="goal[]">
                                         </div>
                                         <div class="form-group">
                                             <label for="interest and inner motivation">Interest And Inner Motivation</label>
-                                            <input type="text" class="form-control mb-1" id="interest and inner motivation" placeholder="Interest And Inner Motivation 1" name='interest[]'>
-                                            <input type="text" class="form-control my-1" id="interest and inner motivation" placeholder="Interest And Inner Motivation 2" name='interest[]'>
-                                            <input type="text" class="form-control mt-1" id="interest and inner motivation" placeholder="Interest And Inner Motivation 3" name='interest[]'>
+                                            <input required type="text" class="form-control mb-1" id="interest and inner motivation" placeholder="Interest And Inner Motivation 1" name='interest[]'>
+                                            <input required type="text" class="form-control my-1" id="interest and inner motivation" placeholder="Interest And Inner Motivation 2" name='interest[]'>
+                                            <input required type="text" class="form-control mt-1" id="interest and inner motivation" placeholder="Interest And Inner Motivation 3" name='interest[]'>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="Strength And Weakness">Strength And Weakness</label>
-                                            <input type="text" class="form-control mb-1" id="Strength And Weakness" placeholder="Strength And Weakness 1" name='saw[]'>
-                                            <input type="text" class="form-control my-1" id="Strength And Weakness" placeholder="Strength And Weakness 2" name='saw[]'>
-                                            <input type="text" class="form-control mt-1" id="Strength And Weakness" placeholder="Strength And Weakness 3" name='saw[]'>
+                                            <input required type="text" class="form-control mb-1" id="Strength And Weakness" placeholder="Strength And Weakness 1" name='saw[]'>
+                                            <input required type="text" class="form-control my-1" id="Strength And Weakness" placeholder="Strength And Weakness 2" name='saw[]'>
+                                            <input required type="text" class="form-control mt-1" id="Strength And Weakness" placeholder="Strength And Weakness 3" name='saw[]'>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="Informasi Tentang Perusahaan">Informasi Tentang Perusahaan</label>
-                                            <textarea name="informasi" id="" cols="30" rows="5" class="form-control"></textarea>
+                                            <textarea required name="informasi" id="" cols="30" rows="5" class="form-control"></textarea>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="Bagaimana Negosiasi Dengan Mereka">Bagaimana Negosiasi Dengan Mereka</label>
-                                            <textarea name="bagaimana" id="" cols="30" rows="5" class="form-control"></textarea>
+                                            <textarea required name="bagaimana" id="" cols="30" rows="5" class="form-control"></textarea>
                                         </div>
                                     </div>
                                     <!-- /.card-body -->
