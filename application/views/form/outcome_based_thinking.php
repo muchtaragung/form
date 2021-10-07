@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | General Form Elements</title>
+    <title><?= $page_title ?></title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -56,37 +56,37 @@
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="">Opponent</label>
-                                            <input type="text" name="opponent" id="" class="form-control">
+                                            <input required type="text" name="opponent" id="" class="form-control">
                                         </div>
 
                                         <div class="form-group">
                                             <label for="">Nama Perusahaan</label>
-                                            <input type="text" name="nama_perusahaan" id="" class="form-control">
+                                            <input required type="text" name="nama_perusahaan" id="" class="form-control">
                                         </div>
 
                                         <div class="form-group">
                                             <label for="">apa yang sebenarnya anda inginkan
                                                 dalam negosiasi ini</label>
-                                            <input type="text" name="pertanyaan1" id="" class="form-control">
+                                            <input required type="text" name="pertanyaan1" id="" class="form-control">
                                         </div>
 
                                         <div class="form-group">
                                             <label for="">Apa yang mereka inginkan dalam
                                                 negosiasi ini? Jika saya tidak tahu,
                                                 kira kira mereka menginginkan apa?</label>
-                                            <input type="text" name="pertanyaan2" id="" class="form-control">
+                                            <input required type="text" name="pertanyaan2" id="" class="form-control">
                                         </div>
 
                                         <div class="form-group">
                                             <label for="">Apa batas minimal yang masih bisa
                                                 anda terima dalam negosiasi ini</label>
-                                            <input type="text" name="pertanyaan3" id="" class="form-control">
+                                            <input required type="text" name="pertanyaan3" id="" class="form-control">
                                         </div>
 
                                         <div class="form-group">
                                             <label for="">Apa masalah yang mungkin terjadi
                                                 pada proses ini?</label>
-                                            <input type="text" name="pertanyaan4" id="" class="form-control">
+                                            <input required type="text" name="pertanyaan4" id="" class="form-control">
                                         </div>
 
                                         <div class="form-group">
@@ -94,14 +94,14 @@
                                                 masalah ini jika mungkin, buat
                                                 problem yang akan menjadi beban
                                                 jika tidak deal?</label>
-                                            <input type="text" name="pertanyaan5" id="" class="form-control">
+                                            <input required type="text" name="pertanyaan5" id="" class="form-control">
                                         </div>
 
                                         <div class="form-group">
                                             <label for="">Bagaimana saya membuat hal dalam
                                                 proses bisa sebagai kesimpulan akhir
                                                 untuk deal?</label>
-                                            <input type="text" name="pertanyaan6" id="" class="form-control">
+                                            <input required type="text" name="pertanyaan6" id="" class="form-control">
                                         </div>
                                     </div>
                                     <!-- /.card-body -->
@@ -141,7 +141,7 @@
 
     <script>
         $(function() {
-            bsCustomFileInput.init();
+            bsCustomFileInput required.init();
         });
     </script>
 </body>
