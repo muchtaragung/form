@@ -65,6 +65,8 @@ class Outcome_based_thinking extends CI_Controller
 
         $data['page_title'] = 'Show Form Outcome Based Thingking';
 
+        $data['id_isi'] = $data_form->id_isi;
+
         // var_dump($data);
         // die();
         $this->load->view('show/outcome_based_thinking', $data);

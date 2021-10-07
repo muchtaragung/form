@@ -77,18 +77,4 @@ class Dashboard extends CI_Controller
 
         redirect('pdf_form/' . $nama_form . ".pdf");
     }
-
-    public function download_pdf($id_form)
-    {
-        $form = $this->form->get_where(['id_form' => $id_form])->row();
-        $nama_form = strtolower(str_replace(' ', '_', $form->nama_form));
-
-        $where = [
-            'id_user' => $this->session->userdata('id'),
-            'id_form' => $id_form
-        ];
-        $isi_form = $this->isi_form->get_where($where)->row();
-
-        redirect('form/' . $nama_form . "/" . "pdf/" . $isi_form->id_isi);
-    }
 }

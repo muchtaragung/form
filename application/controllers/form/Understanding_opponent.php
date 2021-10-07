@@ -58,6 +58,7 @@ class Understanding_opponent extends CI_Controller
         $data['bagaimana'] = $form->bagaimana;
 
         $data['page_title'] = 'Show Form Understanding Opponent';
+        $data['id_isi'] = $data_form->id_isi;
 
         // var_dump($data);
         // die();

@@ -47,6 +47,7 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h3 class="card-title">Understanding Opponent</h3>
+                                    <a href="<?= site_url('form/understanding_opponent/pdf/' . $id_isi) ?>" class="btn btn-warning float-right"><i class="fas fa-file-download"></i></a>
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body table-responsive p-0">
