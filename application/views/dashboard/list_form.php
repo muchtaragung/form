@@ -57,16 +57,9 @@
                                                 <tr>
                                                     <td><?= $i++ ?></td>
                                                     <td><?= $data->nama_form ?></td>
-<<<<<<< HEAD
                                                     <td>
                                                         <a href="<?= site_url('dashboard/view_form/' . $data->id_form) ?>" class="btn btn-primary">Lihat Form</a>
                                                         <a href="<?= site_url('dashboard/download_form/' . $data->id_form) ?>" class="btn btn-danger"><i class="fas fa-file-pdf"></i></a>
-=======
-                                                    <td class="text-center">
-                                                        <a href="<?= site_url('dashboard/view_form/' . $data->id_form) ?>" class="btn btn-primary btn-sm"><i class="fas fa-table"></i><br>Lihat Form</a>
-                                                        <a href="<?= site_url('dashboard/download_form/' . $data->id_form) ?>" class="btn btn-info btn-sm"><i class="fas fa-file"></i><br>Download form kosong</a>
-                                                        <a href="<?= site_url('dashboard/download_pdf/' . $data->id_form) ?>" class="btn btn-success btn-sm"><i class="far fa-file-alt"></i><br>Download form terisi</a>
->>>>>>> 5d527dfd1a305ad1b2f5118bc919fb73a6951d30
                                                     </td>
                                                 </tr>
                                             <?php endforeach ?>

@@ -11,6 +11,7 @@ class Form extends CI_Controller
         $this->load->model('User_model', 'user');
         $this->load->model('Perusahaan_model', 'perusahaan');
         $this->load->model('Form_model', 'form');
+        $this->load->model('Isi_form_model', 'isi_form');
         $this->load->helper('security');
         if ($this->session->userdata('status') != 'admin') {
             echo '<script>alert("Silahkan Login Untuk Mengakses Halaman ini")</script>';
@@ -220,5 +221,20 @@ class Form extends CI_Controller
         $nama_form = strtolower(str_replace(' ', '_', $form->nama_form));
 
         redirect('pdf_form/' . $nama_form . ".pdf");
+    }
+
+    public function show_form($id_user, $id_form)
+    {
+        $join = [
+            ['form', 'form.id_form = isi_form.id_form'],
+            ['user', 'user.id_user = isi_form.id_user']
+        ];
+
+        $where = ['isi_form.id_user' => $id_user, 'isi_form.id_form' => $id_form];
+
+        $data = $this->isi_form->get_join_where($join, $where)->row();
+        $nama_form = strtolower(str_replace(' ', '_', $data->nama_form));
+
+        redirect('form/' . $nama_form . '/' . 'show' . '/' . $data->id_isi);
     }
 }

@@ -9,14 +9,20 @@ class Understanding_opponent extends CI_Controller
         parent::__construct();
         $this->load->model('form_model', 'form');
         $this->load->model('isi_form_model', 'isi_form');
+    }
+
+    private function check_user()
+    {
         if ($this->session->userdata('status') != 'user') {
             echo '<script>alert("Silahkan Login Untuk Mengakses Halaman ini")</script>';
-            redirect('admin/login', 'refresh');
+            redirect('login', 'refresh');
         }
     }
 
     public function index()
     {
+        $this->check_user();
+
         // mengambil tipe form
         $form = $this->form->get_where(['nama_form' => 'Understanding Opponent'])->row();
         // mengecek apakah si user sudah mengisi form atau belum
@@ -36,6 +42,8 @@ class Understanding_opponent extends CI_Controller
 
     public function save()
     {
+        $this->check_user();
+
         // mengambil tipe form
         $form = $this->form->get_where(['nama_form' => 'Understanding Opponent'])->row();
 

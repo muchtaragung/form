@@ -64,4 +64,15 @@ class Isi_form_model extends CI_Model
     {
         return $this->db->delete($this->table, $where);
     }
+
+    public function get_join_where($join, $where)
+    {
+        $this->db->select('*');
+        $this->db->from($this->table);
+        foreach ($join as $data) {
+            $this->db->join($data[0], $data[1]);
+        }
+        $this->db->where($where);
+        return $this->db->get();
+    }
 }
