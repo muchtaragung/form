@@ -29,17 +29,22 @@ class Dashboard extends CI_Controller
      */
     public function list_form()
     {
+        $select = 'form.id_form, form.nama_form, isi_form.isi, user.id_user';
         $join = [
             ['form', 'akses.id_form = form.id_form'],
-            // ['isi_form', 'isi_form.id_form = form.id_form'],
+            ['perusahaan', 'perusahaan.id_perusahaan= akses.id_perusahaan'],
+            ['isi_form', 'isi_form.id_form = form.id_form'],
+            ['user', 'user.id_perusahaan = perusahaan.id_perusahaan'],
         ];
 
         $where = [
-            'akses.akses' => 1
+            'akses.akses' => 1,
+            'user.id_user' => $this->session->userdata('id')
         ];
 
         $data['page_title'] = "List Form | Program Form";
-        $data['form']       = $this->akses->get_join_where($join, $where)->result();
+        $data['form']       = $this->akses->get_join_where($select, $join, $where)->result();
+        // $data['form']       = $this->akses->get_join_where($this->session->userdata('id'))->result();
         $this->load->view('dashboard/list_form', $data);
     }
 

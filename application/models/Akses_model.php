@@ -27,16 +27,21 @@ class Akses_model extends CI_Model
         return $this->db->get_where($this->table, $where);
     }
 
-    public function get_join_where($join, $where)
+    public function get_join_where($select, $join, $where)
     {
-        $this->db->select('*');
+        $this->db->select($select);
         $this->db->from($this->table);
         foreach ($join as $data) {
-            $this->db->join($data[0], $data[1]);
+            $this->db->join($data[0], $data[1], 'left');
         }
         $this->db->where($where);
         return $this->db->get();
     }
+    // public function get_join_where($id_user)
+    // {
+    //     $this->db->query('SELECT form.id_form, form.nama_form, isi_form.isi, user.id_user FROM akses LEFT JOIN form ON akses.id_form = form.id_form LEFT JOIN perusahaan ON perusahaan.id_perusahaan= akses.id_perusahaan LEFT JOIN isi_form on isi_form.id_form = form.id_form LEFT JOIN user on user.id_perusahaan = perusahaan.id_perusahaan WHERE user.id_user = ' . $id_user . '');
+    //     return $this->db->get();
+    // }
 
     /**
      * mengambil semua data tabel

@@ -48,18 +48,28 @@
                                             <tr>
                                                 <th>No</th>
                                                 <th>Nama Form</th>
+                                                <th>Status</th>
                                                 <th class="text-center">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php $i = 1 ?>
                                             <?php foreach ($form as $data) : ?>
-                                                <tr>
+                                                <tr class="text-center">
                                                     <td><?= $i++ ?></td>
                                                     <td><?= $data->nama_form ?></td>
+                                                    <?php if ($data->isi == null) { ?>
+                                                        <td><span class="badge badge-warning">Belum Diisi</span></td>
+                                                    <?php } else { ?>
+                                                        <td><span class="badge badge-success">Telah Diisi</span></td>
+                                                    <?php } ?>
                                                     <td>
-                                                        <a href="<?= site_url('dashboard/view_form/' . $data->id_form) ?>" class="btn btn-primary">Lihat Form</a>
-                                                        <a href="<?= site_url('dashboard/download_form/' . $data->id_form) ?>" class="btn btn-danger"><i class="fas fa-file-pdf"></i></a>
+                                                        <?php if ($data->isi == null) { ?>
+                                                            <a data-toggle="tooltip" data-placement="top" title="Form" href="<?= site_url('dashboard/view_form/' . $data->id_form) ?>" class="form btn btn-primary">Isi Form</a>
+                                                        <?php } else { ?>
+                                                            <a data-toggle="tooltip" data-placement="top" title="Form" href="<?= site_url('dashboard/view_form/' . $data->id_form) ?>" class="form btn btn-primary">Lihat Form</a>
+                                                        <?php } ?>
+                                                        <a data-toggle="tooltip" data-placement="top" title="Download Form Kosong" href="<?= site_url('dashboard/download_form/' . $data->id_form) ?>" class="form btn btn-danger"><i class="fas fa-file-pdf"></i></a>
                                                     </td>
                                                 </tr>
                                             <?php endforeach ?>
