@@ -19,6 +19,14 @@
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item">
+                        <a href="<?= site_url('admin/dashboard') ?>" class="nav-link <?php if ($this->uri->segment(2) == 'dashboard') : ?> active <?php endif ?>">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Dashboard
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="<?= site_url('admin/perusahaan') ?>" class="nav-link <?php if ($this->uri->segment(2) == 'perusahaan') : ?> active <?php endif ?>">
                             <i class="nav-icon fas fa-building"></i>
                             <p>
