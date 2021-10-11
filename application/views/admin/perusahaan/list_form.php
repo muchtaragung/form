@@ -152,8 +152,8 @@
                         <input type="hidden" name="id_perusahaan" value="<?= $perusahaan->id_perusahaan ?>">
                         <div class="form-group">
                             <label for="">Form</label>
-                            <select class="select2 form-control" name="form" id="form">
-                                <option disabled selected>Pilih Form</option>
+                            <select required class="select2 form-control" name="form" id="form">
+                                <option disabled selected value="">Pilih Form</option>
                                 <?php foreach ($form as $data) : ?>
                                     <option value="<?= $data->id_form ?>"><?= $data->nama_form ?></option>
                                 <?php endforeach ?>

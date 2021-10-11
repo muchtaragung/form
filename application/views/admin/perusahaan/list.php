@@ -135,7 +135,7 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="nama_perusahaan">Nama Perusahaan</label>
-                            <input type="text" name="nama_perusahaan" class="form-control">
+                            <input type="text" required name="nama_perusahaan" class="form-control">
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">

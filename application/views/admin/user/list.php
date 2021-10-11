@@ -137,15 +137,15 @@
 
                         <div class="form-group">
                             <label for="nama_user">Nama User</label>
-                            <input type="text" name="nama_user" class="form-control">
+                            <input type="text" required name="nama_user" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="email_user">email User</label>
-                            <input type="email" name="email_user" class="form-control">
+                            <input type="email" required name="email_user" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="password_user">Password User</label>
-                            <input type="password" name="password_user" class="form-control">
+                            <input type="password" required name="password_user" class="form-control">
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">
@@ -175,11 +175,11 @@
                         <input type="hidden" name="id_perusahaan">
                         <div class="form-group">
                             <label for="nama_user">Nama User</label>
-                            <input type="text" name="nama_user" class="form-control">
+                            <input type="text" required name="nama_user" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="email_user">email User</label>
-                            <input type="email" name="email_user" class="form-control">
+                            <input type="email" required name="email_user" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="password_user">Password User</label>
