@@ -45,7 +45,7 @@ class Dashboard extends CI_Controller
         $data['page_title'] = "List Form | Program Form";
         $data['form']       = $this->akses->get_join_where($select, $join, $where)->result();
         // $data['form']       = $this->akses->get_join_where($this->session->userdata('id'))->result();
-        var_dump($data);
+        // var_dump($data);
         $this->load->view('dashboard/list_form', $data);
     }
 
