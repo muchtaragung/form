@@ -6,6 +6,7 @@
         border-collapse: collapse;
         border-spacing: 0;
         margin: 0px auto;
+        width: 100%;
     }
 
     .tg td {
