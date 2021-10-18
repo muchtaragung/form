@@ -46,7 +46,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="card-title">Outcome Based Thinking</h3>
+                                    <h3 class="card-title">BEST ALTERNATIVE TO NEGOTIATE AGREEMENT</h3>
                                     <a href="<?= site_url('form/batna/pdf/' . $id_isi) ?>" class="btn btn-warning float-right"><i class="fas fa-file-download"></i></a>
                                 </div>
                                 <!-- /.card-header -->
