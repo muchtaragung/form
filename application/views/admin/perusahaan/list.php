@@ -73,7 +73,7 @@
                                                     <td>
                                                         <a style="border-radius: 12px" href="<?= site_url('admin/perusahaan/list_form/' . $data->id_perusahaan) ?>" class="btn btn-primary btn-sm">
                                                             <i class="fas fa-table"></i><br>
-                                                            List Form
+                                                            Form Akses
                                                         </a>
                                                         <a style="border-radius: 12px" href="<?= site_url('admin/user/list/' . $data->id_perusahaan) ?>" class="btn btn-success btn-sm">
                                                             <i class="fas fa-users"></i><br>
