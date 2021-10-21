@@ -47,6 +47,11 @@ class Form_model extends CI_Model
     {
         return $this->db->get($this->table);
     }
+    public function get_all_order($order)
+    {
+        $this->db->order_by($order[0], $order[1]);
+        return $this->db->get($this->table);
+    }
 
     public function get_join($join)
     {

@@ -27,7 +27,7 @@ class Form extends CI_Controller
     public function index()
     {
         $data['page_title'] = "List Form | Program Form";
-        $data['form'] =  $this->form->get_all()->result();
+        $data['form'] =  $this->form->get_all_order(['nama_form', 'ASC'])->result();
 
         $this->load->view('admin/form/list', $data);
     }
