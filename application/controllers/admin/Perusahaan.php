@@ -28,7 +28,7 @@ class Perusahaan extends CI_Controller
     {
         $order = ['nama_perusahaan', 'DESC'];
         $data['page_title'] = "List Perusahaan | Program Form";
-        $data['perusahaan'] =  $this->perusahaan->get_all($order)->result();
+        $data['perusahaan'] =  $this->perusahaan->get_all_order($order)->result();
 
         $this->load->view('admin/perusahaan/list', $data);
     }
