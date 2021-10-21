@@ -60,13 +60,17 @@ class Dashboard extends CI_Controller
      */
     public function view_form($id_form)
     {
+        $join = [
+            ['isi_form','isi_form.id_form = form.id_form']
+        ];
+
         $where = array(
             'form.id_form' => $id_form,
             'isi_form.id_user' => $this->session->userdata('id')
         );
 
         $form = $this->form->get_where(['id_form' => $id_form])->row();
-        $isi = $this->form->get_where_join($where)->row();
+        $isi = $this->form->get_join_where('*',$join,$where)->row();
         $nama_form = strtolower(str_replace(' ', '_', $form->nama_form));
 
         if (isset($isi)) {
