@@ -41,7 +41,7 @@ class Perusahaan extends CI_Controller
         $data['page_title'] = "List Perusahaan | Program Form";
         $data['list_form'] =  $this->form->get_akses($id)->result();
         $data['form'] =  $this->form->get_all()->result();
-        $data['perusahaan'] =  $this->form->get_akses($id)->row();
+        $data['perusahaan'] =  $this->akses->get_where(['id_perusahaan'=>$id])->row();
 
         $this->load->view('admin/perusahaan/list_form', $data);
     }
