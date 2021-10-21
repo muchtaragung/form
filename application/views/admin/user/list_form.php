@@ -58,6 +58,7 @@
                                             <tr>
                                                 <th>No</th>
                                                 <th>Nama Form</th>
+                                                <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -67,6 +68,11 @@
                                                 <tr class="text-center">
                                                     <td><?= $i++ ?></td>
                                                     <td><?= $data->nama_form ?></td>
+                                                    <?php if ($data->isi == null) { ?>
+                                                        <td><span class="badge badge-warning">Belum Diisi</span></td>
+                                                    <?php } else { ?>
+                                                        <td><span class="badge badge-success">Telah Diisi</span></td>
+                                                    <?php } ?>
                                                     <td>
                                                         <button type="button" class="btn btn-info btn-sm" onclick="confirmReset('<?= site_url('admin/user/reset_form/' . $data->id_form . '/' . $this->uri->segment(4) . '/' . $data->id_user) ?>','<?= $data->nama_form ?>')">
                                                             <i class="fas fa-redo-alt"></i>

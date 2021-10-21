@@ -24,8 +24,13 @@ class User extends CI_Controller
      */
     public function list($id_perusahaan)
     {
+        $join = array(
+            ['perusahaan', 'perusahaan.id_perusahaan = user.id_perusahaan']
+        );
+        $where = ['user.id_perusahaan' => $id_perusahaan];
+        $order = ['user.nama_user', 'DESC'];
         // mengambil data user sesuai dengan id perusahaan dan di join data usernya dengan perusahaan
-        $data['user']      = $this->user->get_where_join(['user.id_perusahaan' => $id_perusahaan])->result();
+        $data['user']      = $this->user->get_join_where('*', $join, $where, $order)->result();
         $data['page_title'] = "List User Perusahaan | Program Form";
 
         // var_dump($data);
@@ -40,8 +45,20 @@ class User extends CI_Controller
      */
     public function list_form($id_user)
     {
+        $select = 'form.id_form, form.nama_form, isi_form.isi,isi_form.id_user as user_id, user.id_user';
+        $join = [
+            ['form', 'akses.id_form = form.id_form'],
+            ['perusahaan', 'perusahaan.id_perusahaan= akses.id_perusahaan'],
+            ['user', 'user.id_perusahaan = perusahaan.id_perusahaan'],
+            ['isi_form', 'isi_form.id_form = form.id_form AND isi_form.id_user = user.id_user'],
+        ];
+
+        $where = [
+            'akses.akses' => 1,
+            'user.id_user' => $id_user
+        ];
         // mengambil data form sesuai dengan id user
-        $data['form']      = $this->user->get_where_join_form($id_user)->result();
+        $data['form']      = $this->user->get_join_where_form($select, $join, $where)->result();
         $data['page_title'] = "List Form User | Program Form";
 
         // var_dump($data);

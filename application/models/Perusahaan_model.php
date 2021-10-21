@@ -3,7 +3,7 @@
 class Perusahaan_model extends CI_Model
 {
     private $table = 'perusahaan';
-/**
+    /**
      * menyimpan data ke tabel
      *
      * @param array $object
@@ -41,8 +41,9 @@ class Perusahaan_model extends CI_Model
      *
      * @return void
      */
-    public function get_all()
+    public function get_all($order)
     {
+        $this->db->order_by($order[0], $order[1]);
         return $this->db->get($this->table);
     }
 
