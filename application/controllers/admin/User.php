@@ -54,7 +54,6 @@ class User extends CI_Controller
         ];
 
         $where = [
-            'akses.akses' => 1,
             'user.id_user' => $id_user
         ];
         // mengambil data form sesuai dengan id user
