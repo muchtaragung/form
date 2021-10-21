@@ -21,8 +21,7 @@ class User_model extends CI_Model
 
     // nama tabel
     private $table = 'user';
-
-    /**
+/**
      * menyimpan data ke tabel
      *
      * @param array $object
@@ -41,44 +40,18 @@ class User_model extends CI_Model
      */
     public function get_where(array $where)
     {
-        $this->db->select("*");
-        $this->db->from($this->table);
-        $this->db->where($where);
-        $query = $this->db->get();
-        return $query;
+        return $this->db->get_where($this->table, $where);
     }
 
-    /**
-     * mengambil data tabel dengan kondisi where
-     *
-     * @param array $where array dari data yang mau di ambil
-     * @param array $where array dari data yang mau di ambil
-     * @return void
-     */
-    public function get_where_join($where)
+    public function get_join_where($select, $join, $where)
     {
-        $this->db->select("*");
+        $this->db->select($select);
         $this->db->from($this->table);
-        $this->db->join('perusahaan', 'perusahaan.id_perusahaan = user.id_perusahaan');
+        foreach ($join as $data) {
+            $this->db->join($data[0], $data[1], 'left');
+        }
         $this->db->where($where);
-        $query = $this->db->get();
-        return $query;
-    }
-    /**
-     * mengambil data tabel dengan kondisi where
-     *
-     * @param array $where array dari data yang mau di ambil
-     * @param array $where array dari data yang mau di ambil
-     * @return void
-     */
-    public function get_where_join_form($id)
-    {
-        $this->db->select("*");
-        $this->db->from('form');
-        $this->db->join('isi_form', 'isi_form.id_form = form.id_form');
-        $this->db->where('isi_form.id_user', $id);
-        $query = $this->db->get();
-        return $query;
+        return $this->db->get();
     }
 
     /**
@@ -88,10 +61,17 @@ class User_model extends CI_Model
      */
     public function get_all()
     {
-        $this->db->select("*");
+        return $this->db->get($this->table);
+    }
+
+    public function get_join($join)
+    {
+        $this->db->select('*');
         $this->db->from($this->table);
-        $query = $this->db->get();
-        return $query;
+        foreach ($join as $data) {
+            $this->db->join($data[0], $data[1]);
+        }
+        return $this->db->get();
     }
 
     /**
@@ -111,6 +91,22 @@ class User_model extends CI_Model
     }
 
     /**
+     * mengupdate data dengan kondisi where.
+     * arr data ada id nya
+     * idnya yang di pake untuk where
+     *
+     * data yang di update juga ada arr data
+     * @param array $data
+     * @param array $where
+     * @return void
+     */
+    public function update_where(array $data, array $where)
+    {
+
+        return $this->db->where($where)->update($this->table, $data);
+    }
+
+    /**
      * menghapus data
      * arr where adalah id dari kolom yang akan di hapus
      *
@@ -120,18 +116,5 @@ class User_model extends CI_Model
     public function delete(array $where)
     {
         return $this->db->delete($this->table, $where);
-    }
-    /**
-     * reset form user
-     * arr where adalah id dari kolom yang akan di hapus
-     *
-     * @param array $where
-     * @return void
-     */
-    public function reset_form($id_form, $id_user)
-    {
-        $this->db->where('id_form', $id_form);
-        $this->db->where('id_user', $id_user);
-        return $this->db->delete('isi_form');
     }
 }

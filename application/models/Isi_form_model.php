@@ -4,8 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Isi_form_model extends CI_Model
 {
     private $table = 'isi_form';
-
-    /**
+/**
      * menyimpan data ke tabel
      *
      * @param array $object
@@ -27,6 +26,17 @@ class Isi_form_model extends CI_Model
         return $this->db->get_where($this->table, $where);
     }
 
+    public function get_join_where($select, $join, $where)
+    {
+        $this->db->select($select);
+        $this->db->from($this->table);
+        foreach ($join as $data) {
+            $this->db->join($data[0], $data[1], 'left');
+        }
+        $this->db->where($where);
+        return $this->db->get();
+    }
+
     /**
      * mengambil semua data tabel
      *
@@ -35,6 +45,16 @@ class Isi_form_model extends CI_Model
     public function get_all()
     {
         return $this->db->get($this->table);
+    }
+
+    public function get_join($join)
+    {
+        $this->db->select('*');
+        $this->db->from($this->table);
+        foreach ($join as $data) {
+            $this->db->join($data[0], $data[1]);
+        }
+        return $this->db->get();
     }
 
     /**
@@ -48,7 +68,23 @@ class Isi_form_model extends CI_Model
      */
     public function update(array $data)
     {
-        $where['id'] = $data['id'];
+        $where['id_isi'] = $data['id_isi'];
+
+        return $this->db->where($where)->update($this->table, $data);
+    }
+
+    /**
+     * mengupdate data dengan kondisi where.
+     * arr data ada id nya
+     * idnya yang di pake untuk where
+     *
+     * data yang di update juga ada arr data
+     * @param array $data
+     * @param array $where
+     * @return void
+     */
+    public function update_where(array $data, array $where)
+    {
 
         return $this->db->where($where)->update($this->table, $data);
     }
@@ -63,16 +99,5 @@ class Isi_form_model extends CI_Model
     public function delete(array $where)
     {
         return $this->db->delete($this->table, $where);
-    }
-
-    public function get_join_where($join, $where)
-    {
-        $this->db->select('*');
-        $this->db->from($this->table);
-        foreach ($join as $data) {
-            $this->db->join($data[0], $data[1]);
-        }
-        $this->db->where($where);
-        return $this->db->get();
     }
 }

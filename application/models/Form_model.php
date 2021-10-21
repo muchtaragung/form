@@ -17,33 +17,6 @@ class Form_model extends CI_Model
     }
 
     /**
-     * mengambil semua data akses
-     *
-     * @return void
-     */
-    public function get_akses($id)
-    {
-        $this->db->select('*');
-        $this->db->from('akses');
-        $this->db->join('perusahaan', 'perusahaan.id_perusahaan = akses.id_perusahaan');
-        $this->db->join('form', 'form.id_form = akses.id_form');
-        $this->db->where('perusahaan.id_perusahaan', $id);
-        return $this->db->get();
-    }
-    /**
-     * cek apakah perusahaan sudah memiliki form akses
-     *
-     * @return void
-     */
-    public function check_form($id_perusahaan, $id_form)
-    {
-        $this->db->select('*');
-        $this->db->from('akses');
-        $this->db->where('id_perusahaan', $id_perusahaan);
-        $this->db->where('id_form', $id_form);
-        return $this->db->get();
-    }
-    /**
      * mengambil data tabel dengan kondisi where
      *
      * @param array $where array dari data yang mau di ambil
@@ -54,22 +27,16 @@ class Form_model extends CI_Model
         return $this->db->get_where($this->table, $where);
     }
 
-    /**
-     * mengambil data form join dengan isi form
-     *
-     * @param array $where
-     *
-     * @return void
-     */
-    public function get_where_join(array $where)
+    public function get_join_where($select, $join, $where)
     {
-        $this->db->select('*');
-        $this->db->from('form');
-        $this->db->join('isi_form', 'isi_form.id_form = form.id_form');
+        $this->db->select($select);
+        $this->db->from($this->table);
+        foreach ($join as $data) {
+            $this->db->join($data[0], $data[1], 'left');
+        }
         $this->db->where($where);
         return $this->db->get();
     }
-
 
     /**
      * mengambil semua data tabel
@@ -79,6 +46,16 @@ class Form_model extends CI_Model
     public function get_all()
     {
         return $this->db->get($this->table);
+    }
+
+    public function get_join($join)
+    {
+        $this->db->select('*');
+        $this->db->from($this->table);
+        foreach ($join as $data) {
+            $this->db->join($data[0], $data[1]);
+        }
+        return $this->db->get();
     }
 
     /**
@@ -92,7 +69,23 @@ class Form_model extends CI_Model
      */
     public function update(array $data)
     {
-        $where['id'] = $data['id'];
+        $where['id_' . $this->table] = $data['id_' . $this->table];
+
+        return $this->db->where($where)->update($this->table, $data);
+    }
+
+    /**
+     * mengupdate data dengan kondisi where.
+     * arr data ada id nya
+     * idnya yang di pake untuk where
+     *
+     * data yang di update juga ada arr data
+     * @param array $data
+     * @param array $where
+     * @return void
+     */
+    public function update_where(array $data, array $where)
+    {
 
         return $this->db->where($where)->update($this->table, $data);
     }
