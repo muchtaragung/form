@@ -30,7 +30,7 @@ class User extends CI_Controller
         $where = ['user.id_perusahaan' => $id_perusahaan];
         $order = ['user.nama_user', 'DESC'];
         // mengambil data user sesuai dengan id perusahaan dan di join data usernya dengan perusahaan
-        $data['user']      = $this->user->get_join_where('*', $join, $where, $order)->result();
+        $data['user']      = $this->user->get_join_where_order('*', $join, $where, $order)->result();
         $data['page_title'] = "List User Perusahaan | Program Form";
 
         // var_dump($data);
