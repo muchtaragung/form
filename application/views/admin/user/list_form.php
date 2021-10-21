@@ -74,11 +74,19 @@
                                                         <td><span class="badge badge-success">Telah Diisi</span></td>
                                                     <?php } ?>
                                                     <td>
-                                                        <button type="button" class="btn btn-info btn-sm" onclick="confirmReset('<?= site_url('admin/user/reset_form/' . $data->id_form . '/' . $this->uri->segment(4) . '/' . $data->id_user) ?>','<?= $data->nama_form ?>')">
-                                                            <i class="fas fa-redo-alt"></i>
-                                                            Reset
-                                                        </button>
-                                                        <a href="<?= site_url('admin/form/show_form/' . $this->uri->segment(4) . '/' . $data->id_form) ?>" class="btn btn-primary btn-sm rounded">Lihat Form</a>
+                                                        <?php if ($data->isi != null) { ?>
+                                                            <button type="button" class="btn btn-info btn-sm" onclick="confirmReset('<?= site_url('admin/user/reset_form/' . $data->id_form . '/' . $this->uri->segment(4) . '/' . $data->id_user) ?>','<?= $data->nama_form ?>')">
+                                                                <i class="fas fa-redo-alt"></i>
+                                                                Reset
+                                                            </button>
+                                                            <a href="<?= site_url('admin/form/show_form/' . $this->uri->segment(4) . '/' . $data->id_form) ?>" class="btn btn-primary btn-sm rounded">Lihat Form</a>
+                                                        <?php } else { ?>
+                                                            <button disabled type="button" class="btn btn-info btn-sm" onclick="confirmReset('<?= site_url('admin/user/reset_form/' . $data->id_form . '/' . $this->uri->segment(4) . '/' . $data->id_user) ?>','<?= $data->nama_form ?>')">
+                                                                <i class="fas fa-redo-alt"></i>
+                                                                Reset
+                                                            </button>
+                                                            <a href="<?= site_url('admin/form/show_form/' . $this->uri->segment(4) . '/' . $data->id_form) ?>" class="btn btn-primary btn-sm rounded disabled">Lihat Form</a>
+                                                        <?php } ?>
                                                     </td>
                                                 </tr>
                                             <?php endforeach ?>
