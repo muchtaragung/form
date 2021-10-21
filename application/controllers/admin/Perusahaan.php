@@ -26,7 +26,7 @@ class Perusahaan extends CI_Controller
      */
     public function index()
     {
-        $order = ['nama_perusahaan', 'DESC'];
+        $order = ['nama_perusahaan', 'ASc'];
         $data['page_title'] = "List Perusahaan | Program Form";
         $data['perusahaan'] =  $this->perusahaan->get_all_order($order)->result();
 
@@ -41,16 +41,16 @@ class Perusahaan extends CI_Controller
     {
 
         $join = [
-            ['perusahaan','perusahaan.id_perusahaan = akses.id_perusahaan'],
-            ['form','form.id_form = akses.id_form']
+            ['perusahaan', 'perusahaan.id_perusahaan = akses.id_perusahaan'],
+            ['form', 'form.id_form = akses.id_form']
         ];
 
-        $where = ['perusahaan.id_perusahaan'=> $id];
+        $where = ['perusahaan.id_perusahaan' => $id];
 
         $data['page_title'] = "List Perusahaan | Program Form";
-        $data['list_form'] =  $this->akses->get_join_where('*',$join,$where)->result();
+        $data['list_form'] =  $this->akses->get_join_where('*', $join, $where)->result();
         $data['form'] =  $this->form->get_all()->result();
-        $data['perusahaan'] =  $this->perusahaan->get_where(['id_perusahaan'=>$id])->row();
+        $data['perusahaan'] =  $this->perusahaan->get_where(['id_perusahaan' => $id])->row();
 
         $this->load->view('admin/perusahaan/list_form', $data);
     }
