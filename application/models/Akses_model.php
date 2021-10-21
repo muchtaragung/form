@@ -8,7 +8,7 @@ class Akses_model extends CI_Model
     /**
      * menyimpan data ke tabel
      *
-     * @param array $object
+       * @param array $object
      * @return void
      */
     public function save(array $object)
@@ -35,6 +35,18 @@ class Akses_model extends CI_Model
             $this->db->join($data[0], $data[1], 'left');
         }
         $this->db->where($where);
+        return $this->db->get();
+    }
+
+    public function get_join_where_order($select, $join, $where, $order)
+    {
+        $this->db->select($select);
+        $this->db->from($this->table);
+        foreach ($join as $data) {
+            $this->db->join($data[0], $data[1], 'left');
+        }
+        $this->db->where($where);
+        $this->db->order_by($order[0], $order[1]);
         return $this->db->get();
     }
 
