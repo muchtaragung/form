@@ -8,6 +8,7 @@ class User extends CI_Controller
         $this->load->library('email');
         $this->load->model('User_model', 'user');
         $this->load->model('Perusahaan_model', 'perusahaan');
+        $this->load->model('Isi_form_model', 'isi_form');
         $this->load->helper('security');
         if ($this->session->userdata('status') != 'admin') {
             echo '<script>alert("Silahkan Login Untuk Mengakses Halaman ini")</script>';
@@ -173,8 +174,12 @@ class User extends CI_Controller
      */
     public function reset_form($id_form, $uri, $id_user)
     {
+        $where = [
+            'id_form' => $id_form,
+            'id_user' => $id_user
+        ];
         // update data dan kembali ke halaman list user
-        $this->user->reset_form($id_form, $id_user);
+        $this->isi_form->delete($where);
         $this->session->set_flashdata('msg', 'Data berhasil direset');
         redirect('admin/user/list_form/' . $uri);
     }
