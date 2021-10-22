@@ -37,6 +37,16 @@
                     <div class="row">
                         <!-- left column -->
                         <div class="col-12">
+                            <?php if ($this->session->flashdata('msg') != null) { ?>
+                                <div class="alert alert-success" role="alert">
+                                    <?php echo $this->session->flashdata('msg'); ?>
+                                </div>
+                            <?php } ?>
+                            <?php if ($this->session->flashdata('error') != null) { ?>
+                                <div class="alert alert-warning" role="alert">
+                                    <?php echo $this->session->flashdata('error'); ?>
+                                </div>
+                            <?php } ?>
                             <div class="card">
                                 <div class="card-header">
                                     <h3 class="card-title">List Form</h3>
@@ -68,6 +78,10 @@
                                                             <a data-toggle="tooltip" data-placement="top" title="Form" href="<?= site_url('dashboard/view_form/' . $data->id_form) ?>" class="form btn btn-primary">Isi Form</a>
                                                         <?php } else { ?>
                                                             <a data-toggle="tooltip" data-placement="top" title="Form" href="<?= site_url('dashboard/view_form/' . $data->id_form) ?>" class="form btn btn-primary">Lihat Form</a>
+                                                            <button type="button" class="btn btn-warning" onclick="confirmReset('<?= site_url('dashboard/reset_form/' . $data->id_form) ?>','<?= $data->nama_form ?>')">
+                                                                <i class="fas fa-redo-alt"></i>
+                                                                Reset
+                                                            </button>
                                                         <?php } ?>
                                                         <a data-toggle="tooltip" data-placement="top" title="Download Form Kosong" href="<?= site_url('dashboard/download_form/' . $data->id_form) ?>" class="form btn btn-danger"><i class="fas fa-file-pdf"></i></a>
                                                     </td>
@@ -104,7 +118,22 @@
     <!-- ./wrapper -->
 
     <?php $this->load->view('layout/script') ?>
-
+    <script>
+        function confirmReset(link, nama) {
+            Swal.fire({
+                title: 'Apakah anda ingin reset form ' + nama,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.replace(link)
+                }
+            })
+        }
+    </script>
 </body>
 
 </html>
