@@ -132,16 +132,7 @@ class User extends CI_Controller
      */
     public function update()
     {
-        // mengatur form validasi
-        $this->form_validation->set_rules(
-            'email_user',
-            'Email',
-            'required',
-            array(
-                'required'      => 'You have not provided %s.',
-                'is_unique'     => 'This %s already exists.'
-            )
-        );
+
 
         // mengatur eror delimiter
         $this->form_validation->set_error_delimiters('<span style="font-size: 10px;color:red">', '</span>');
@@ -150,27 +141,23 @@ class User extends CI_Controller
         $data['id_perusahaan'] = $this->input->post('id_perusahaan');
 
         // jika form validasi tidak lolos
-        if ($this->form_validation->run() == FALSE) {
-            $this->session->set_flashdata('error', 'Email sudah Di Gunakan');
-            redirect('admin/user/list' . $data['id_perusahaan']);
+
+        // mengambil data inputan user
+        $data['id_user'] = $this->input->post('id_user');
+        $data['nama_user'] = $this->input->post('nama_user');
+        $data['email_user'] = $this->input->post('email_user');
+
+        // mengecek apakah password di update
+        if ($this->input->post('password_user', true) == null) {
+            $data['password_user'] = $this->input->post('password_lama', true);
         } else {
-            // mengambil data inputan user
-            $data['id_user'] = $this->input->post('id_user');
-            $data['nama_user'] = $this->input->post('nama_user');
-            $data['email_user'] = $this->input->post('email_user');
-
-            // mengecek apakah password di update
-            if ($this->input->post('password', true) == null) {
-                $data['password_user'] = $this->input->post('password_lama', true);
-            } else {
-                $data['password_user'] = password_hash($this->input->post('password_user', true), PASSWORD_DEFAULT);
-            }
-
-            // update data dan kembali ke halaman list user
-            $this->user->update($data);
-            $this->session->set_flashdata('msg', 'Data berhasil diupdate');
-            redirect('admin/user/list/' . $data['id_perusahaan']);
+            $data['password_user'] = password_hash($this->input->post('password_user', true), PASSWORD_DEFAULT);
         }
+
+        // update data dan kembali ke halaman list user
+        $this->user->update($data);
+        $this->session->set_flashdata('msg', 'Data berhasil diupdate');
+        redirect('admin/user/list/' . $data['id_perusahaan']);
     }
     /**
      * reset form user
