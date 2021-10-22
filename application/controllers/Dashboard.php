@@ -101,7 +101,7 @@ class Dashboard extends CI_Controller
         ];
         // update data dan kembali ke halaman list user
         $this->isi_form->delete($where);
-        $this->session->set_flashdata('msg', 'Data berhasil direset');
+        $this->session->set_flashdata('msg', 'Form berhasil direset');
         redirect('dashboard/list_form/');
     }
 }
