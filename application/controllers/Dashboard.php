@@ -41,9 +41,9 @@ class Dashboard extends CI_Controller
             'akses.akses' => 1,
             'user.id_user' => $this->session->userdata('id')
         ];
-
+        $order = ['form.nama_form', 'ASC'];
         $data['page_title'] = "List Form | Program Form";
-        $data['form']       = $this->akses->get_join_where($select, $join, $where)->result();
+        $data['form']       = $this->akses->get_join_where_order($select, $join, $where, $order)->result();
         // $data['form']       = $this->akses->get_join_where($this->session->userdata('id'))->result();
         // var_dump($data);
         $this->load->view('dashboard/list_form', $data);
@@ -61,7 +61,7 @@ class Dashboard extends CI_Controller
     public function view_form($id_form)
     {
         $join = [
-            ['isi_form','isi_form.id_form = form.id_form']
+            ['isi_form', 'isi_form.id_form = form.id_form']
         ];
 
         $where = array(
@@ -70,7 +70,7 @@ class Dashboard extends CI_Controller
         );
 
         $form = $this->form->get_where(['id_form' => $id_form])->row();
-        $isi = $this->form->get_join_where('*',$join,$where)->row();
+        $isi = $this->form->get_join_where('*', $join, $where)->row();
         $nama_form = strtolower(str_replace(' ', '_', $form->nama_form));
 
         if (isset($isi)) {

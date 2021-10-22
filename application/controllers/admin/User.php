@@ -57,8 +57,9 @@ class User extends CI_Controller
         $where = [
             'user.id_user' => $id_user
         ];
+        $order = ['isi_form.isi', 'ASC'];
         // mengambil data form sesuai dengan id user
-        $data['form']      = $this->user->get_join_where_form($select, $join, $where)->result();
+        $data['form']      = $this->user->get_join_where_form($select, $join, $where, $order)->result();
         $data['page_title'] = "List Form User | Program Form";
 
         // var_dump($data);

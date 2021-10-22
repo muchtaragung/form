@@ -46,9 +46,10 @@ class Perusahaan extends CI_Controller
         ];
 
         $where = ['perusahaan.id_perusahaan' => $id];
+        $order = ['form.nama_form', 'ASC'];
 
         $data['page_title'] = "List Perusahaan | Program Form";
-        $data['list_form'] =  $this->akses->get_join_where('*', $join, $where)->result();
+        $data['list_form'] =  $this->akses->get_join_where_order('*', $join, $where, $order)->result();
         $data['form'] =  $this->form->get_all()->result();
         $data['perusahaan'] =  $this->perusahaan->get_where(['id_perusahaan' => $id])->row();
 
