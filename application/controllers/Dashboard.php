@@ -87,4 +87,21 @@ class Dashboard extends CI_Controller
 
         redirect('pdf_form/' . $nama_form . ".pdf");
     }
+
+    /**
+     * reset form user
+     *
+     * @return void
+     */
+    public function reset_form($id_form)
+    {
+        $where = [
+            'id_form' => $id_form,
+            'id_user' => $this->session->userdata('id')
+        ];
+        // update data dan kembali ke halaman list user
+        $this->isi_form->delete($where);
+        $this->session->set_flashdata('msg', 'Data berhasil direset');
+        redirect('dashboard/list_form/');
+    }
 }
