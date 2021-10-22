@@ -112,11 +112,15 @@ class User extends CI_Controller
      *
      * @return void
      */
-    public function edit($id_perusahaan)
+    public function edit($id_user)
     {
-        // mengambil data user sesuai dengan id user dan di join data usernya dengan perusahaan
 
-        $data = $this->user->get_where_join(['user.id_user' => $id_perusahaan])->row();
+        // mengambil data user sesuai dengan id user dan di join data usernya dengan perusahaan
+        $data = $this->user->get_join_where(
+            '*',
+            [['perusahaan', 'perusahaan.id_perusahaan = user.id_perusahaan']],
+            ['user.id_user' => $id_user]
+        )->row();
 
         echo json_encode($data);
     }

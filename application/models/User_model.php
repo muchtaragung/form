@@ -43,7 +43,7 @@ class User_model extends CI_Model
         return $this->db->get_where($this->table, $where);
     }
 
-    public function get_join_where($select, $join, $where, $order)
+    public function get_join_where($select, $join, $where)
     {
         $this->db->select($select);
         $this->db->from($this->table);
