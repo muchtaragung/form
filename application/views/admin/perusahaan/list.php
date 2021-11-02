@@ -71,19 +71,19 @@
                                                     <td><?= $i++ ?></td>
                                                     <td><strong><?= $data->nama_perusahaan ?></strong></td>
                                                     <td>
-                                                        <a style="border-radius: 12px" href="<?= site_url('admin/perusahaan/list_form/' . $data->id_perusahaan) ?>" class="btn btn-primary btn-sm">
+                                                        <a style="" href="<?= site_url('admin/perusahaan/list_form/' . $data->id_perusahaan) ?>" class="btn btn-primary btn-sm">
                                                             <i class="fas fa-table"></i><br>
                                                             Form Akses
                                                         </a>
-                                                        <a style="border-radius: 12px" href="<?= site_url('admin/user/list/' . $data->id_perusahaan) ?>" class="btn btn-success btn-sm">
+                                                        <a style="" href="<?= site_url('admin/user/list/' . $data->id_perusahaan) ?>" class="btn btn-success btn-sm">
                                                             <i class="fas fa-users"></i><br>
                                                             Users
                                                         </a>
-                                                        <button style="border-radius: 12px" type="button" class="btn btn-info btn-sm" title="Edit" onclick="edit_perusahaan('<?php echo $data->id_perusahaan ?>')">
+                                                        <button style="" type="button" class="btn btn-info btn-sm" title="Edit" onclick="edit_perusahaan('<?php echo $data->id_perusahaan ?>')">
                                                             <i class="fas fa-edit"></i><br>
                                                             Edit
                                                         </button>
-                                                        <button style="border-radius: 12px" type="button" class="btn btn-danger btn-sm" onclick="confirmDelete('<?= site_url('admin/perusahaan/delete/' . $data->id_perusahaan) ?>','<?= $data->nama_perusahaan ?>')">
+                                                        <button style="" type="button" class="btn btn-danger btn-sm" onclick="confirmDelete('<?= site_url('admin/perusahaan/delete/' . $data->id_perusahaan) ?>','<?= $data->nama_perusahaan ?>')">
                                                             <i class="fas fa-trash"></i><br>
                                                             Hapus
                                                         </button>
