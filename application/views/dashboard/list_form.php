@@ -75,12 +75,14 @@
                                                     <?php } ?>
                                                     <td>
                                                         <?php if ($data->isi == null) { ?>
-                                                            <a data-toggle="tooltip" data-placement="top" title="Form" href="<?= site_url('dashboard/view_form/' . $data->id_form) ?>" class="form btn btn-primary">Isi Form</a>
-                                                        <?php } else { ?>
-                                                            <a data-toggle="tooltip" data-placement="top" title="Form" href="<?= site_url('dashboard/view_form/' . $data->id_form) ?>" class="form btn btn-primary">Lihat Form</a>
-                                                            <button type="button" class="btn btn-warning" onclick="confirmReset('<?= site_url('dashboard/reset_form/' . $data->id_form) ?>','<?= $data->nama_form ?>')">
+                                                            <a data-toggle="tooltip" data-placement="top" title="Isi Form" href="<?= site_url('dashboard/view_form/' . $data->id_form) ?>" class="form btn btn-primary"><i class="fas fa-pencil-alt"></i></a>
+                                                            <button data-toggle="tooltip" type="button" class="btn btn-warning" title="Reset Form" onclick="confirmReset ('<?= site_url('dashboard/reset_form/' . $data->id_form) ?>','<?= $data->nama_form ?>')" disabled>
                                                                 <i class="fas fa-redo-alt"></i>
-                                                                Reset
+                                                            </button>
+                                                        <?php } else { ?>
+                                                            <a data-toggle="tooltip" data-placement="top" title="Lihat Form" href="<?= site_url('dashboard/view_form/' . $data->id_form) ?>" class="form btn btn-primary"><i class="fas fa-eye"></i></a>
+                                                            <button data-toggle="tooltip" type="button" class="btn btn-warning" title="Reset Form" onclick="confirmReset ('<?= site_url('dashboard/reset_form/' . $data->id_form) ?>','<?= $data->nama_form ?>')">
+                                                                <i class="fas fa-redo-alt"></i>
                                                             </button>
                                                         <?php } ?>
                                                         <a data-toggle="tooltip" data-placement="top" title="Download Form Kosong" href="<?= site_url('dashboard/download_form/' . $data->id_form) ?>" class="form btn btn-danger"><i class="fas fa-file-pdf"></i></a>
